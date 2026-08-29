@@ -3,4 +3,10 @@
 @theme {
   --font-sans: 'DM Sans', sans-serif;
   --font-header: 'Newsreader', serif;
+  --color-primary-blue: #1A56DB;
+  --color-single-orange: #FFA924;
+  --color-stack-teal: #006E65;
+  --color-neutral-stone: #E3E2E4;
+  --color-dark-theme: #131210;
+  --color-light-theme: #F5F7F9;
 }
