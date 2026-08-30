@@ -12,3 +12,6 @@
   --color-medium-gray: #514F4A;
   --color-semi-white: #FCFCFD;
 }
+.dark{
+  background-color: var(--color-dark-theme);
+}

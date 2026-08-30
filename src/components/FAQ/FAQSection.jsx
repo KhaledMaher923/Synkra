@@ -2,7 +2,9 @@ import {FAQList,FAQTitle,FAQSubtitle} from '../../data/faqData.js';
 
 import FAQItem from "./FAQItem.jsx";
 import FAQHeader from "./FAQHeader.jsx";
-export default function FAQSection({theme}){
+import {useTheme} from "../../context/ThemeContext.jsx";
+export default function FAQSection(){
+    const {theme} = useTheme();
     return (
         <section className={`py-16 px-35 flex flex-col items-center gap-12 ${theme==='dark'? 'bg-dark-theme text-semi-white':'bg-light-theme text-dark-theme'} max-lg:py-6 max-lg:px-6`}>
             <FAQHeader theme={theme} title={FAQTitle} subtitle={FAQSubtitle}/>
