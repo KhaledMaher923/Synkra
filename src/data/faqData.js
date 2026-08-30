@@ -1,4 +1,5 @@
-const FAQData =  [
+const [FAQTitle,FAQSubtitle]=['Questions Teams Ask Before Trusting Synkra.','Your technical architecture questions, answered.'];
+const FAQList =  [
   {
     id: 'faq-zapier-difference',
     question: 'How is Synkra different from Zapier or Make?',
@@ -36,5 +37,4 @@ const FAQData =  [
       'Yes, absolutely. You can upgrade, downgrade, or cancel your subscription at any time directly from your account settings with zero hidden cancellation fees or long-term lock-in contracts.',
   },
 ];
-
-export default FAQData;
+export {FAQList, FAQTitle, FAQSubtitle};
