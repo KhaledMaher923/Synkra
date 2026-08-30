@@ -1,16 +1,13 @@
-import {useState} from 'react';
-import { FaRocket } from 'react-icons/fa';
-import FAQSection from './components/FAQ/FAQSection';
+import FAQSection from './components/FAQ/FAQSection.jsx';
+import {useTheme} from './context/ThemeContext.jsx';
 function App() {
-  const [theme,setTheme] = useState('light');
+  const {toggleTheme}=useTheme();
   return (
     <>
-      <button className='p-6 border' onClick={()=>{
-        setTheme((prevTheme=>{
-          return prevTheme === 'light'? 'dark': 'light';
-        }));
+      <button className='p-6 border bg-amber-50' onClick={()=>{
+        toggleTheme();
       }}>changhTheme</button>
-      <FAQSection theme={theme}/>
+      <FAQSection/>
     </>
   )
 }
