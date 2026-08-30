@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import {useState} from 'react';
 import { FaRocket } from 'react-icons/fa';
+import FAQSection from './components/FAQ/FAQSection';
 function App() {
-
+  const [theme,setTheme] = useState('light');
   return (
     <>
-      <h1 className='text-3xl text-red-600 inline'>Hello World</h1>
-      <p className='text-2xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum voluptatem quaerat libero eos quod nesciunt veritatis consequuntur recusandae, debitis, repudiandae cum. Id dolorem nisi sed, blanditiis optio praesentium? Repellat, alias.</p>
-      <FaRocket className='text-3xl text-blue-700 inline'/>
+      <button className='p-6 border' onClick={()=>{
+        setTheme((prevTheme=>{
+          return prevTheme === 'light'? 'dark': 'light';
+        }));
+      }}>changhTheme</button>
+      <FAQSection theme={theme}/>
     </>
   )
 }
