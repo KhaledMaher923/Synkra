@@ -6,11 +6,14 @@ import JamesKim from '../assets/images/Alex-or-James-Kim.jpg';
 import OliverChen from '../assets/images/Oliver-Chen.jpg';
 import AishaGomez from '../assets/images/Aisha-Gomez.jpg';
 import NatalieBrown from '../assets/images/Natalie-Brown.jpg';
-
+import { GiHandBag } from "react-icons/gi";
 
 export const featureGridTitle= 'The Digital Craftmen of Synkra';
 export const featureGridSubtitle = 'Former builders from Stripe, Linear, and HubSpot, obsessed with operational clarity.';
-
+export const featureGridHeaderbutton = {
+    name:"We're grow.See open roles",
+    icon:<GiHandBag />,
+};
 export const featureGridData=[ 
     {
         name:'Pablo Thompson',
