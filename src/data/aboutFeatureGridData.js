@@ -10,7 +10,7 @@ import { GiHandBag } from "react-icons/gi";
 
 export const featureGridTitle= 'The Digital Craftmen of Synkra';
 export const featureGridSubtitle = 'Former builders from Stripe, Linear, and HubSpot, obsessed with operational clarity.';
-export const featureGridHeaderbutton = {
+export const featureGridHeaderButton = {
     name:"We're grow.See open roles",
     icon:<GiHandBag />,
 };
