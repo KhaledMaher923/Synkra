@@ -11,49 +11,57 @@ import { GiHandBag } from "react-icons/gi";
 export const featureGridTitle= 'The Digital Craftmen of Synkra';
 export const featureGridSubtitle = 'Former builders from Stripe, Linear, and HubSpot, obsessed with operational clarity.';
 export const featureGridHeaderButton = {
-    name:"We're grow.See open roles",
-    icon:<GiHandBag />,
+    name:"We're growing. See open roles",
+    icon:GiHandBag,
 };
 export const featureGridData=[ 
     {
+        id: 'pablo-thompson',
         name:'Pablo Thompson',
         role:'Founder & Chief Visionary',
         domain:'DESIGN',
-        Image:PabloThompson
+        image:PabloThompson
     },{
+        id: 'elena-thorne',
         name:'Elena Thorne',
         role:'CEO & Co-founder',
         domain:'DEVELOPMENT',
-        Image:ElenaThorne
+        image:ElenaThorne
     },{
+        id: 'marcus-lee',
         name:'Marcus Lee',
         role:'CTO & Co-founder',
         domain:'MARKETING',
-        Image:MarcusLee
+        image:MarcusLee
     },{
+        id: 'sofia-patel',
         name:'Sofia Patel',
         role:'Head of Product',
         domain:'USER RESEARCH',
-        Image:SofiaPatel
+        image:SofiaPatel
     },{
+        id: 'james-kim',
         name:'James Kim',
-        role:'PRODUCT MANAGEMENT',
-        domain:'Product Lead',
-        Image:JamesKim
+        role:'Product Lead',
+        domain:'PRODUCT MANAGEMENT',
+        image:JamesKim
     },{
+        id: 'oliver-chen',
         name:'Oliver Chen',
         role:'QA Specialist',
         domain:'QUALITY ASSURANCE',
-        Image:OliverChen
+        image:OliverChen
     },{
+        id: 'aisha-gomez',
         name:'Aisha Gomez',
         role:'Staff Engineer',
         domain:'DATA ANALYSIS',
-        Image:AishaGomez
+        image:AishaGomez
     },{
+        id: 'natalie-brown',
         name:'Natalie Brown',
         role:'Staff Engineer',
         domain:'CUSTOMER SUPPORT',
-        Image:NatalieBrown
+        image:NatalieBrown
     }
 ]
