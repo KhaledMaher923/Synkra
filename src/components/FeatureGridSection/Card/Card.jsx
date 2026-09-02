@@ -1,5 +1,4 @@
 import CardBody from "./CardBody";
-import CardImage from "./CardImage";
 
 export default function Card({theme,info} )
 {
