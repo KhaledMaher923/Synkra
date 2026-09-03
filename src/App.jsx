@@ -3,6 +3,7 @@ import FAQSection from './components/FAQ/FAQSection.jsx';
 import {AboutFeatureGrid} from './components/about-feature-grid/AboutFeatureGrid.jsx';
 import {featureGridTitle, featureGridSubtitle, featureGridHeaderButton, featureGridData} from './data/aboutFeatureGridData.js';
 import {useTheme} from './context/ThemeContext.jsx';
+import FeatureGridSection from './components/FeatureGridSection/FeatureGridSection.jsx';
 function App() {
   const {toggleTheme}=useTheme();
   return (
@@ -10,6 +11,8 @@ function App() {
       <button className='p-6 border bg-amber-50' onClick={()=>{
         toggleTheme();
       }}>changhTheme</button>
+      <FeatureGridSection/>
+      <FAQSection/>
       <TestimonialsSection />
       <FAQSection />
       <AboutFeatureGrid 
