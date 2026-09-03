@@ -8,7 +8,7 @@ export default function TestimonialCard({ theme, quote, name, role, company, ava
       }`}
     >
       <p
-        className={`font-header italic text-[17px] leading-relaxed ${
+        className={`DM-sans  text-[16px] leading-relaxed ${
           theme === 'dark' ? 'text-[#E4E2DC]' : 'text-dark-theme'
         }`}
       >

@@ -18,7 +18,7 @@ export default function TestimonialsSection() {
     return (
         <section
             className={`py-16 px-16 flex flex-col items-center gap-14 ${theme === 'dark' ? 'bg-dark-theme text-semi-white' : 'bg-light-theme text-dark-theme'
-                } max-lg:py-6 max-lg:px-6`}
+                } max-lg:py-10 max-lg:px-6 max-lg:gap-8`}
         >
             <TestimonialsHeader
                 theme={theme}
@@ -26,9 +26,9 @@ export default function TestimonialsSection() {
                 title={TestimonialsTitle}
                 subtitle={TestimonialsSubtitle}
             />
-            <ul className='grid grid-cols-3 gap-6 w-full max-lg:grid-cols-1'>
+            <ul className='grid grid-cols-3 gap-6 w-full max-lg:flex max-lg:grid-cols-none max-lg:overflow-x-auto max-lg:snap-x max-lg:snap-mandatory max-lg:no-scrollbar max-lg:-mx-6 max-lg:px-6 max-lg:pb-2'>
                 {topRow.map((t) => (
-                    <li key={t.id}>
+                    <li key={t.id} className='max-lg:w-[82%] max-lg:shrink-0 max-lg:snap-center'>
                         <TestimonialCard theme={theme} {...t} />
                     </li>
                 ))}
@@ -36,18 +36,14 @@ export default function TestimonialsSection() {
 
             <FeaturedTestimonial theme={theme} {...FeaturedTestimonialData} />
 
-            <ul className='grid grid-cols-3 gap-6 w-full max-lg:grid-cols-1'>
+            <ul className='grid grid-cols-3 gap-6 w-full max-lg:flex max-lg:grid-cols-none max-lg:overflow-x-auto max-lg:snap-x max-lg:snap-mandatory max-lg:no-scrollbar max-lg:-mx-6 max-lg:px-6 max-lg:pb-2'>
                 {bottomRow.map((t) => (
-                    <li key={t.id}>
+                    <li key={t.id} className='max-lg:w-[82%] max-lg:shrink-0 max-lg:snap-center'>
                         <TestimonialCard theme={theme} {...t} />
                     </li>
                 ))}
             </ul>
-
-
         </section>
     
-
-
     );
 }
