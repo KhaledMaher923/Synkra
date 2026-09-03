@@ -1,3 +1,4 @@
+import TestimonialsSection from './components/Testimonials/TestimonialsSection.jsx';
 import FAQSection from './components/FAQ/FAQSection.jsx';
 import {AboutFeatureGrid} from './components/about-feature-grid/AboutFeatureGrid.jsx';
 import {featureGridTitle, featureGridSubtitle, featureGridHeaderButton, featureGridData} from './data/aboutFeatureGridData.js';
@@ -9,6 +10,8 @@ function App() {
       <button className='p-6 border bg-amber-50' onClick={()=>{
         toggleTheme();
       }}>changhTheme</button>
+      <TestimonialsSection />
+      <FAQSection />
       <AboutFeatureGrid 
         title={featureGridTitle}
         subtitle={featureGridSubtitle}
