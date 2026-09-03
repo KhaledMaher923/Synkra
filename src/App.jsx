@@ -1,5 +1,5 @@
 import FAQSection from './components/FAQ/FAQSection.jsx';
-import AboutFeatureGrid from './components/about-feature-grid/AboutFeatureGrid.jsx';
+import {AboutFeatureGrid} from './components/about-feature-grid/AboutFeatureGrid.jsx';
 import {featureGridTitle, featureGridSubtitle, featureGridHeaderButton, featureGridData} from './data/aboutFeatureGridData.js';
 import {useTheme} from './context/ThemeContext.jsx';
 function App() {
