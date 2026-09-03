@@ -9,7 +9,6 @@ function App() {
       <button className='p-6 border bg-amber-50' onClick={()=>{
         toggleTheme();
       }}>changhTheme</button>
-      <FAQSection/>
       <AboutFeatureGrid 
         title={featureGridTitle}
         subtitle={featureGridSubtitle}
