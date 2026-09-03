@@ -1,4 +1,7 @@
+import TestimonialsSection from './components/Testimonials/TestimonialsSection.jsx';
 import FAQSection from './components/FAQ/FAQSection.jsx';
+import {AboutFeatureGrid} from './components/about-feature-grid/AboutFeatureGrid.jsx';
+import {featureGridTitle, featureGridSubtitle, featureGridHeaderButton, featureGridData} from './data/aboutFeatureGridData.js';
 import {useTheme} from './context/ThemeContext.jsx';
 import FeatureGridSection from './components/FeatureGridSection/FeatureGridSection.jsx';
 function App() {
@@ -10,6 +13,14 @@ function App() {
       }}>changhTheme</button>
       <FeatureGridSection/>
       <FAQSection/>
+      <TestimonialsSection />
+      <FAQSection />
+      <AboutFeatureGrid 
+        title={featureGridTitle}
+        subtitle={featureGridSubtitle}
+        headerButtonObj={featureGridHeaderButton}
+        employees={featureGridData}
+      />
     </>
   )
 }
