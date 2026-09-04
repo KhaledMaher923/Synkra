@@ -1,4 +1,4 @@
-export default function TestimonialCard({ theme, quote, name, role, company, avatar }) {
+export default function TestimonialCard({ theme, quote, name, role, company, image }) {
   return (
     <article
       className={`flex flex-col justify-between gap-8 p-8 rounded-2xl border h-full ${
@@ -16,7 +16,7 @@ export default function TestimonialCard({ theme, quote, name, role, company, ava
       </p>
       <div className='flex items-center gap-3'>
         <img
-          src={avatar}
+          src={image}
           alt={name}
           className='w-11 h-11 rounded-full object-cover'
           loading='lazy'

@@ -1,6 +1,6 @@
 import { FaQuoteRight } from 'react-icons/fa';
 
-export default function FeaturedTestimonial({ theme, quote, name, role, teamSize, avatar }) {
+export default function FeaturedTestimonial({ theme, quote, name, role, teamSize, image }) {
   return (
     <article
         className={`relative flex items-start justify-between gap-8 w-full max-lg:flex-col max-lg:justify-start max-lg:gap-7 max-lg:p-9 max-lg:rounded-2xl max-lg:border-2 max-lg:border-primary-blue ${
@@ -18,7 +18,7 @@ export default function FeaturedTestimonial({ theme, quote, name, role, teamSize
         <div className='flex flex-col items-start gap-2 shrink-0 max-lg:w-full'>
           <div className='flex items-center gap-3'>
             <img
-              src={avatar}
+              src={image}
               alt={name}
               className='w-14 h-14 rounded-full object-cover border-2 border-primary-blue max-lg:w-12 max-lg:h-12'
               loading='lazy'
