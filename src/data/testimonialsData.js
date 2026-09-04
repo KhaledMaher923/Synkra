@@ -1,3 +1,5 @@
+import LisaTran from '../assets/images/Lisa-Tran.jpg'
+
 const TestimonialsBadge = 'WALL OF LOVE';
 const TestimonialsTitle = "Built for the world's most\ndemanding engineering teams.";
 const TestimonialsSubtitle =
@@ -11,7 +13,7 @@ const TestimonialsList = [
     name: 'Lisa Tran',
     role: 'Data Analyst',
     company: 'Acme Corp',
-    avatar: 'src/assets/images/Lisa-Tran.jpg',
+    avatar: LisaTran,
   },
   {
     id: 'testimonial-jamal-carter',
