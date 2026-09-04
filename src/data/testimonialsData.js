@@ -1,4 +1,10 @@
 import LisaTran from '../assets/images/Lisa-Tran.jpg'
+import JamalCarter from '../assets/images/Jamal-Carter.jpg'
+import SofiaChen from '../assets/images/Sofia-Chen.jpg'
+import AlexOrJamesKim from '../assets/images/Alex-or-James-Kim.jpg'
+import DavidWong from '../assets/images/David-Wong.jpg'
+import EmmaJohnson from '../assets/images/Emma-Johnson.jpg'
+import PamelaSchmidt from '../assets/images/Pamela-Schmidt.jpg'
 
 const TestimonialsBadge = 'WALL OF LOVE';
 const TestimonialsTitle = "Built for the world's most\ndemanding engineering teams.";
@@ -13,7 +19,7 @@ const TestimonialsList = [
     name: 'Lisa Tran',
     role: 'Data Analyst',
     company: 'Acme Corp',
-    avatar: LisaTran,
+    image: LisaTran,
   },
   {
     id: 'testimonial-jamal-carter',
@@ -22,7 +28,7 @@ const TestimonialsList = [
     name: 'Jamal Carter',
     role: 'Product Manager',
     company: 'Technovate',
-    avatar: 'src/assets/images/Jamal-Carter.jpg',
+    image: JamalCarter,
   },
   {
     id: 'testimonial-sofia-chen',
@@ -31,7 +37,7 @@ const TestimonialsList = [
     name: 'Sofia Chen',
     role: 'Software Architect',
     company: 'NextGen Solutions',
-    avatar: 'src/assets/images/Sofia-Chen.jpg',
+    image: SofiaChen,
   },
   {
     id: 'testimonial-alex-kim',
@@ -40,7 +46,7 @@ const TestimonialsList = [
     name: 'Alex Kim',
     role: 'HR Manager',
     company: 'Innovate LLC',
-    avatar: 'src/assets/images/Alex-or-James-Kim.jpg',
+    image: AlexOrJamesKim,
   },
   {
     id: 'testimonial-david-wong',
@@ -49,7 +55,7 @@ const TestimonialsList = [
     name: 'David Wong',
     role: 'CTO',
     company: 'CloudTech Inc',
-    avatar: 'src/assets/images/David-Wong.jpg',
+    image: DavidWong,
   },
   {
     id: 'testimonial-emma-johnson',
@@ -58,7 +64,7 @@ const TestimonialsList = [
     name: 'Emma Johnson',
     role: 'UX Designer',
     company: 'Creative Labs',
-    avatar: 'src/assets/images/Emma-Johnson.jpg',
+    image: EmmaJohnson,
   },
 ];
 
@@ -68,7 +74,7 @@ const FeaturedTestimonial = {
   name: 'Pamela Schmidt',
   role: 'Co-Founder, Stackly (B2B SaaS)',
   teamSize: '12-person team',
-  avatar: 'src/assets/images/Pamela-Schmidt.jpg',
+  image: PamelaSchmidt,
 };
 
 export {
