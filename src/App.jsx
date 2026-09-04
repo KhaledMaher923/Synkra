@@ -4,6 +4,7 @@ import {AboutFeatureGrid} from './components/about-feature-grid/AboutFeatureGrid
 import {featureGridTitle, featureGridSubtitle, featureGridHeaderButton, featureGridData} from './data/aboutFeatureGridData.js';
 import {useTheme} from './context/ThemeContext.jsx';
 import FeatureGridSection from './components/FeatureGridSection/FeatureGridSection.jsx';
+import ValuesBento from './components/ValuesBento/ValuesBento.jsx';
 function App() {
   const {toggleTheme}=useTheme();
   return (
@@ -11,6 +12,7 @@ function App() {
       <button className='p-6 border bg-amber-50' onClick={()=>{
         toggleTheme();
       }}>changhTheme</button>
+      <ValuesBento/>
       <FeatureGridSection/>
       <FAQSection/>
       <TestimonialsSection />
