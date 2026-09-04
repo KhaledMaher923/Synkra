@@ -1,3 +1,11 @@
+import LisaTran from '../assets/images/Lisa-Tran.jpg'
+import JamalCarter from '../assets/images/Jamal-Carter.jpg'
+import SofiaChen from '../assets/images/Sofia-Chen.jpg'
+import AlexOrJamesKim from '../assets/images/Alex-or-James-Kim.jpg'
+import DavidWong from '../assets/images/David-Wong.jpg'
+import EmmaJohnson from '../assets/images/Emma-Johnson.jpg'
+import PamelaSchmidt from '../assets/images/Pamela-Schmidt.jpg'
+
 const TestimonialsBadge = 'WALL OF LOVE';
 const TestimonialsTitle = "Built for the world's most\ndemanding engineering teams.";
 const TestimonialsSubtitle =
@@ -11,7 +19,7 @@ const TestimonialsList = [
     name: 'Lisa Tran',
     role: 'Data Analyst',
     company: 'Acme Corp',
-    avatar: 'src/assets/images/Lisa-Tran.jpg',
+    image: LisaTran,
   },
   {
     id: 'testimonial-jamal-carter',
