@@ -8,7 +8,7 @@ function HeroVisual() {
   const { theme } = useTheme();
 
   return (
-    <div className="relative max-w-md mb-12">
+    <div className="relative max-w-md mb-12, hidden md:block">
       <img
         src={buildingImg}
         alt="Enterprise building"

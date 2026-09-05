@@ -4,7 +4,7 @@ import HeroVisual from "../hero-section/heroVisual.jsx";
 
 function HeroSection() {
   return (
-    <section className="flex justify-between items-center gap-12 px-8 py-16">
+    <section className="md:flex justify-between items-center gap-12 px-8 py-16">
       <div className="flex-1">
         <HeroHeader />
         <HeroButtons />
