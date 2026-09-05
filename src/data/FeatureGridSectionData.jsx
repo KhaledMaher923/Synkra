@@ -1,29 +1,33 @@
 import Analytics from "../assets/images/green-world-map.png";
 import intelligence from "../assets/images/desktop-screen-green-background.png";
-import starIcon from "../assets/icons/star.svg";
-import analyticsIcon from "../assets/icons/analytics.svg";
-import recoveryIcon from "../assets/icons/recovery.svg";
-import opsIntelligenceIcon from "../assets/icons/ops-intelligence.svg";
-import visualBuilderIcon from "../assets/icons/visual-builder.svg";
-import integrationsIcon from "../assets/icons/integrations.svg";
-import accessControlIcon from "../assets/icons/access-control.svg";
+
+import {
+  PiShootingStarDuotone,
+  PiEngineDuotone,
+  PiRecycleDuotone,
+  PiBrainDuotone,
+  PiPaletteDuotone,
+  PiLockKeyDuotone,
+} from "react-icons/pi";
+
+import { TbSwitchHorizontal } from "react-icons/tb";
 
 const [FGSTitle, FGSBadge, FGSSubtitle, StarIcon] = [
   "An Ops Brain that Actually Shows its Work",
   "What makes Synkra different %",
   "Most tools fire automations and hope for the best. Synkra treats every workflow as a first class system, it listens, decides, acts, and records exactly what happened. So your team can trust the result",
-  starIcon,
+  <PiShootingStarDuotone />,
 ];
 const FGSCardList = [
   {
     id: "analytics",
     badge: {
       text: "ANALYTICS",
-      bgColorDark: '#081D5B',
+      bgColorDark: "#081D5B",
       textColorDark: "#75A2F0",
       bgColor: "#EBF2FD",
       textColor: "#1A56DB",
-      icon: analyticsIcon,
+      icon: <PiEngineDuotone className="text-[14px]" />,
     },
     title: "Live Workflow Analytics",
     content:
@@ -39,7 +43,7 @@ const FGSCardList = [
       textColorDark: "#EDFAF3",
       bgColor: "#EDFAF3",
       textColor: "#1B6F4A",
-      icon: recoveryIcon,
+      icon: <PiRecycleDuotone className="text-[14px]" />,
     },
     title: "Built-In Recovery & Replays",
     content: `When something fails, Synkra doesn't go silent. It retries with backoff, logs the error with full context, and alerts the right person. Once fixed, replay the run with one click.`,
@@ -52,7 +56,7 @@ const FGSCardList = [
       textColorDark: "#EDFAF3",
       bgColor: "#EDFAF3",
       textColor: "#1B6F4A",
-      icon: integrationsIcon,
+      icon: <TbSwitchHorizontal className="text-[14px]" />,
     },
     title: "50+ Deep SaaS Integrations",
     content: `Native connectors for Slack, Notion, Linear, GitHub, Stripe, HubSpot, Jira, Salesforce, and more. Two-way sync, typed payloads, and opinionated defaults so you don't live in API docs.`,
@@ -65,7 +69,7 @@ const FGSCardList = [
       textColorDark: "#5EEAD4",
       bgColor: "#0F766E",
       textColor: "#CCFBF1",
-      icon: opsIntelligenceIcon,
+      icon: <PiBrainDuotone className="text-[14px]" />,
     },
     title:
       "Your tools generate signals." +
@@ -84,7 +88,7 @@ const FGSCardList = [
       textColorDark: "#FEF6E7",
       bgColor: "#FEF6E7",
       textColor: "#92510A",
-      icon: visualBuilderIcon,
+      icon: <PiPaletteDuotone className="text-[14px]" />,
     },
     title: "Visual Workflow Playbooks",
     content: `Design end-to-end playbooks on a canvas your PMs can own. Define conditions, branches, and fallbacks without code. Engineers stay in the loop, not stuck wiring everything together.`,
@@ -97,7 +101,7 @@ const FGSCardList = [
       textColorDark: "#FEF0F0",
       bgColor: "#FEF0F0",
       textColor: "#BE1C1C",
-      icon: accessControlIcon,
+      icon: <PiLockKeyDuotone className="text-[14px]" />,
     },
     title: "Granular Access & Guardrails",
     content: `Control who can design playbooks, who can publish them, and who can only see outcomes. Ships with sensible defaults for growing teams and scales to stricter enterprise policies.`,
