@@ -4,7 +4,7 @@ import TopNavigation from './components/Navigation/TopNavigation.jsx';
 import SideDrawer from './components/Navigation/SideDrawer.jsx';
 import TestimonialsSection from './components/Testimonials/TestimonialsSection.jsx';
 import FAQSection from './components/FAQ/FAQSection.jsx';
-import CTASection from './components/CTA/CTASection';
+import CTASection from './components/CTA/ctaSection.jsx';
 import HeroSection from "./components/hero-section/heroSection";
 import { useTheme } from './context/ThemeContext.jsx';
 import { AboutFeatureGrid } from './components/AboutFeatureGrid/AboutFeatureGrid.jsx';
@@ -21,8 +21,6 @@ function App() {
       <AnnouncementBar />
       <TopNavigation onOpenMobileMenu={() => setIsMobileMenuOpen(true)} />
       <SideDrawer isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
-  
-
       <HeroSection />
       <ValuesBento />
       <FeatureGridSection />

@@ -1,4 +1,8 @@
-const title = "Your team is spending hours on work that Synkra can run in seconds";
+const title = {
+    text: "Your team is spending hours on work that",
+    italic: "Synkra",
+    normal: "can run in seconds",
+};
 
 const buttons = {
   primary: "Create an Account",

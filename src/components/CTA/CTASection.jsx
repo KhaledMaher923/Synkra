@@ -1,11 +1,12 @@
 import CTAButtons from "./CTAButtons";
 import CTAHeader from "./CTAHeader";
+import CTAQuote from "./CTAQuote";
 import overlayBlur from "../../assets/images/Overlay+Blur.png";
 
 function CTASection() {
   return (
     <section className="px-6 py-16 flex justify-center">
-      <div className="relative overflow-hidden bg-dark-theme rounded-3xl max-w-2xl w-full px-8 py-12 flex flex-col items-center gap-6 border border-white/10">
+      <div className="relative bg-gradient-to-br from-[#0E0F11] to-[#23252A] rounded-xl max-w-[1000px] w-full md:h-[600px] pt-12 pb-12 pl-6 pr-6 flex flex-col items-center gap-4 border border-white/10">
         <img
           src={overlayBlur}
           alt=""
@@ -14,6 +15,7 @@ function CTASection() {
 
         <CTAHeader />
         <CTAButtons />
+        <CTAQuote />
       </div>
     </section>
   );
