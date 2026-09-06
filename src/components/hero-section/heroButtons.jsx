@@ -1,5 +1,6 @@
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { buttons, disclaimer } from "../../data/hero-sectionData";
+import { KeyReturn } from "@phosphor-icons/react";
 
 function HeroButtons() {
   const { theme } = useTheme();
@@ -7,8 +8,16 @@ function HeroButtons() {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-4 max-md:flex-col">
-        <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
-          {buttons.primary}
+
+        <button className="w-full md:w-auto flex justify-center items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+        <span> {buttons.primary}</span> 
+         <KeyReturn
+            size={16} 
+            weight="duotone" 
+            position="right"
+            className="text-white shrink-0"
+          />
+
         </button>
 
         <button
