@@ -27,3 +27,11 @@
     scrollbar-width: none;
   }
 }
+.hidden-icon> path:nth-child(1),.hidden-icon> path:nth-child(2)
+{
+  fill: #babab5 ;
+}
+.hidden-icon-dark> path:nth-child(1),.hidden-icon-dark> path:nth-child(2)
+{
+  fill: #5b5a59;
+}
