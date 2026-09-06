@@ -11,6 +11,7 @@
   --color-light-theme: #F5F7F9;
   --color-medium-gray: #514F4A;
   --color-semi-white: #FCFCFD;
+  --color-straight-green: #1B6F4A
 }
 .dark{
   background-color: var(--color-dark-theme);
