@@ -16,6 +16,12 @@ const TrustSection = () => {
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#F2F1EF] [.dark_&]:from-[#1F1E1C] to-transparent z-10 md:hidden pointer-events-none"></div>
           
           {/* الحاوية القابلة للسحب */}
+        <div className="relative w-full max-w-full">
+          
+     
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#F2F1EF] [.dark_&]:from-[#1F1E1C] to-transparent z-10 md:hidden pointer-events-none"></div>
+          
+        
           <div className="flex items-center justify-start md:justify-between w-full gap-12 md:gap-4 px-6 md:px-12 overflow-x-auto flex-nowrap md:flex-wrap no-scrollbar snap-x snap-mandatory">
             {trustSectionData.companies.map((company, index) => (
               <span 

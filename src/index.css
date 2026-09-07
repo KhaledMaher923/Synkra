@@ -11,6 +11,7 @@
   --color-light-theme: #F5F7F9;
   --color-medium-gray: #514F4A;
   --color-semi-white: #FCFCFD;
+  --color-straight-green: #1B6F4A
 }
 .dark{
   background-color: var(--color-dark-theme);
@@ -25,4 +26,12 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+}
+.hidden-icon> path:nth-child(1),.hidden-icon> path:nth-child(2)
+{
+  fill: #babab5 ;
+}
+.hidden-icon-dark> path:nth-child(1),.hidden-icon-dark> path:nth-child(2)
+{
+  fill: #5b5a59;
 }

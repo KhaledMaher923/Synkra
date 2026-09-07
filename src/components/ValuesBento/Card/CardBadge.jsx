@@ -10,7 +10,7 @@ export default function CardBadge({ badge }) {
         backgroundColor: activeBg,
       }}
     >
-      <img src={badge.icon} />
+      {theme == "dark" ? badge.iconDark : badge.icon}
     </div>
   );
 }
