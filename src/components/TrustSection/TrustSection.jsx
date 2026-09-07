@@ -36,7 +36,7 @@ const TrustSection = () => {
         </div>
 
    
-
+      </div>
       </div>
     </section>
   );
