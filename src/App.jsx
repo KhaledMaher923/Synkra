@@ -14,6 +14,7 @@ import { AboutFeatureGrid } from './components/AboutFeatureGrid/AboutFeatureGrid
 import { featureGridTitle, featureGridSubtitle, featureGridHeaderButton, featureGridData } from './data/aboutFeatureGridData.js';
 import FeatureGridSection from './components/FeatureGridSection/FeatureGridSection.jsx';
 import ValuesBento from './components/ValuesBento/ValuesBento.jsx';
+import TrustSection from './components/TrustSection/TrustSection.jsx';
 import LandingCtaSection from './components/LandingCtaSection/LandingCtaSection';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <HeroSection />
       
       <ValuesBento />
+      <TrustSection />
       <FeatureGridSection />
       <FAQSection />
       <TestimonialsSection />
