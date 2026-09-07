@@ -3,7 +3,7 @@ import { useTheme } from "../../context/ThemeContext.jsx";
 // Import your actual SVG assets from the icons folder
 import LogoLight from "../../assets/icons/synkra-logo-light.svg";
 import LogoDark from "../../assets/icons/synkra-logo-dark.svg";
-import LogoIconLight from "../../assets/icons/synkra-logo-icon-lights.svg";
+import LogoIconLight from "../../assets/icons/synkra-logo-icon-light.svg";
 import LogoIconDark from "../../assets/icons/synkra-logo-icon-dark.svg";
 
 export default function Logo({ className = "", isIconOnly = false, showCms = false }) {
