@@ -11,6 +11,7 @@ import ValuesBento from './components/ValuesBento/ValuesBento.jsx';
 import HeroSection from "./components/hero-section/heroSection";
 import TrustSection from './components/TrustSection/TrustSection.jsx';
 import LandingCtaSection from './components/LandingCtaSection/LandingCtaSection';
+import StatsSection from './components/StatsSection/StatsSection.jsx';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,15 +22,14 @@ function App() {
       <TopNavigation onOpenMobileMenu={() => setIsMobileMenuOpen(true)} />
       <SideDrawer isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
 
-      {/* Page Content wrapped in a semantic <main> tag */}
       <main>
         <HeroSection />
+        <StatsSection />
         <ValuesBento />
         <TrustSection />
         <FeatureGridSection />
         <FAQSection />
         <TestimonialsSection />
-        
         <AboutFeatureGrid 
           title={featureGridTitle}
           subtitle={featureGridSubtitle}
