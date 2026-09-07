@@ -5,12 +5,12 @@ export default function Card({ info }) {
   const { theme } = useTheme();
   const classes =
     info.id == "recovery"
-      ? "bg-[#1A56DB] text-[#FCFCFD] "
+      ? "bg-primary-blue text-semi-white "
       : info.id == "visual-builder"
         ? "bg-[#F4A016]"
         : theme == "dark"
-          ? "bg-[#131210]"
-          : "bg-[#FCFCFD]";
+          ? "bg-dark-theme"
+          : "bg-semi-white";
   let gridDesktopView =
     info.id == "analytics"
       ? "md:col-span-2"
@@ -22,7 +22,7 @@ export default function Card({ info }) {
 
   return (
     <div
-      className={`border-1 ${theme == "dark" ? "border-[#333230]" : "border-[#E4E3DF]"} rounded-[12px] p-[16px]  ${classes}  ${gridDesktopView}`}
+      className={`border ${theme == "dark" ? "border-[#333230]" : "border-[#E4E3DF]"} rounded-xl p-4  ${classes}  ${gridDesktopView}`}
     >
       <CardBody
         id={info.id}

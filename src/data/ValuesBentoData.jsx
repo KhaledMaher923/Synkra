@@ -14,8 +14,8 @@ const VBCardList = [
     badge: {
       bgColorDark: `#333230`,
       bgColor: `#E4E3DF`,
-   icon: <AiTwotoneEyeInvisible  className='text-[#131210] hidden-icon text-[22px]'/>,
-      iconDark:<AiTwotoneEyeInvisible  className='text-[#FCFCFD] hidden-icon-dark text-[22px]'/>
+   icon: <AiTwotoneEyeInvisible  className='text-dark-theme hidden-icon text-[22px]'/>,
+      iconDark:<AiTwotoneEyeInvisible  className='text-semi-white hidden-icon-dark text-[22px]'/>
 
     },
     title: `Automation should be invisible`,
@@ -27,7 +27,7 @@ const VBCardList = [
     badge: {
       bgColorDark: `#081D5B`,
       bgColor: `#EBF2FD`,
-      icon: <PiShieldCheckeredDuotone className='text-[#1A56DB] text-[22px]' />,
+      icon: <PiShieldCheckeredDuotone className='text-primary-blue text-[22px]' />,
       iconDark: <PiShieldCheckeredDuotone className='text-[#75A2F0] text-[22px]' />,
     },
     title: `Reliability is a feature`,
@@ -40,7 +40,7 @@ uptime.`,
     badge: {
       bgColorDark: `#052E1F`,
       bgColor: `#EDFAF3`,
-      icon: <GoGitBranch className='text-[#1B6F4A] text-[22px]'/>,
+      icon: <GoGitBranch className='text-straight-green text-[22px]'/>,
       iconDark: <GoGitBranch className='text-[#EDFAF3] text-[22px]'/>,
     },
     title: `PMs should own the Ops`,
