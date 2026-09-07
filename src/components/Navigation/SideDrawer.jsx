@@ -21,9 +21,9 @@ export default function SideDrawer({ isOpen, onClose }) {
 
       {/* Drawer Container (Width 336px, Radius 5px, 1px Dashed border #1A56DB) */}
       <div
-        className={`fixed top-0 left-0 h-full w-[336px] max-w-[85vw] z-50 transform transition-transform duration-300 ease-in-out flex flex-col
-          rounded-r-[5px] border-r border-dashed border-[#1A56DB]
-          ${theme === "dark" ? "bg-[#131210] text-[#FCFCFD]" : "bg-[#FCFCFD] text-[#131210]"}
+        className={`fixed top-0 left-0 h-full w-84 max-w-[85vw] z-50 transform transition-transform duration-300 ease-in-out flex flex-col
+          rounded-r-[5px] border-r border-dashed border-primary-blue
+          ${theme === "dark" ? "bg-dark-theme text-semi-white" : "bg-semi-white text-dark-theme"}
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
@@ -33,7 +33,7 @@ export default function SideDrawer({ isOpen, onClose }) {
             <img
               src={theme === "dark" ? darkLogo : lightLogo}
               alt="Synkra"
-              className="h-auto w-[115px] transition-opacity duration-200"
+              className="h-auto w-28.75 transition-opacity duration-200"
             />
           </a>
           <button onClick={onClose} className="rounded-md p-2 transition-colors hover:bg-gray-200 dark:hover:bg-[#1A3D91]">
@@ -55,12 +55,12 @@ export default function SideDrawer({ isOpen, onClose }) {
 
           {/* MAIN MENU */}
           <div className="flex flex-col gap-2">
-            <div className="text-[11px] font-bold text-[#131210] dark:text-[#FCFCFD] uppercase tracking-wider mb-1">Main Menu</div>
-            <a href="#dashboard" className={`flex items-center gap-3 px-4 py-3 rounded-[8px] font-sans text-[14px] font-medium transition-colors ${theme === "dark" ? "bg-[#0C2B7B] text-[#75A2F0]" : "bg-[#EBF2FD] text-[#1A56DB]"}`}>
+            <div className="text-[11px] font-bold text-dark-theme dark:text-semi-white uppercase tracking-wider mb-1">Main Menu</div>
+            <a href="#dashboard" className={`flex items-center gap-3 px-4 py-3 rounded-lg font-sans text-[14px] font-medium transition-colors ${theme === "dark" ? "bg-[#0C2B7B] text-[#75A2F0]" : "bg-[#EBF2FD] text-primary-blue"}`}>
               <HiOutlineHome className="w-5 h-5" />
               Dashboard
             </a>
-            <a href="#activity" className="flex items-center gap-3 px-4 py-2 rounded-[8px] font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-[#FCFCFD]">
+            <a href="#activity" className="flex items-center gap-3 px-4 py-2 rounded-lg font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-semi-white">
               <HiOutlineChartSquareBar className="w-5 h-5" />
               Activity Log
             </a>
@@ -68,42 +68,42 @@ export default function SideDrawer({ isOpen, onClose }) {
 
           {/* CONTENT */}
           <div className="flex flex-col gap-2">
-            <div className="text-[11px] font-bold text-[#131210] dark:text-[#FCFCFD] uppercase tracking-wider mb-1">Content</div>
-            <a href="#blog" className="flex items-center justify-between px-4 py-2 rounded-[8px] font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-[#FCFCFD]">
+            <div className="text-[11px] font-bold text-dark-theme dark:text-semi-white uppercase tracking-wider mb-1">Content</div>
+            <a href="#blog" className="flex items-center justify-between px-4 py-2 rounded-lg font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-semi-white">
               <div className="flex items-center gap-3"><HiOutlineDocumentText className="w-5 h-5" /> Blog Posts</div>
-              <span className="w-4 h-4 bg-gray-200 dark:gray-200-800 rounded-full flex items-center justify-center text-[10px]">8</span>
+              <span className="w-4 h-4 bg-gray-200 dark:bg-gray-200 rounded-full flex items-center justify-center text-[10px]">8</span>
             </a>
-            <a href="#changelog" className="flex items-center gap-3 px-4 py-2 rounded-[8px] font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-[#FCFCFD]">
+            <a href="#changelog" className="flex items-center gap-3 px-4 py-2 rounded-lg font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-semi-white">
               <HiOutlineClipboardList className="w-5 h-5" /> Changelog
             </a>
-            <a href="#testimonials" className="flex items-center justify-between px-4 py-2 rounded-[8px] font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-[#FCFCFD]">
+            <a href="#testimonials" className="flex items-center justify-between px-4 py-2 rounded-lg font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-semi-white">
               <div className="flex items-center gap-3"><HiOutlineChatAlt2 className="w-5 h-5" /> Testimonials</div>
-              <span className="w-4 h-4 bg-gray-200 dark:gray-200-800 rounded-full flex items-center justify-center text-[10px]">3</span>
+              <span className="w-4 h-4 bg-gray-200 dark:bg-gray-200 rounded-full flex items-center justify-center text-[10px]">3</span>
             </a>
-            <a href="#pricing" className="flex items-center gap-3 px-4 py-2 rounded-[8px] font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-[#FCFCFD]">
+            <a href="#pricing" className="flex items-center gap-3 px-4 py-2 rounded-lg font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-semi-white">
               <HiOutlineTag className="w-5 h-5" /> Pricing
             </a>
-            <a href="#faq" className="flex items-center gap-3 px-4 py-2 rounded-[8px] font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-[#FCFCFD]">
+            <a href="#faq" className="flex items-center gap-3 px-4 py-2 rounded-lg font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-semi-white">
               <HiOutlineViewList className="w-5 h-5" /> FAQ
             </a>
           </div>
 
           {/* WORKSPACE */}
           <div className="flex flex-col gap-2">
-            <div className="text-[11px] font-bold text-[#131210] dark:text-[#FCFCFD] uppercase tracking-wider mb-1">Workspace</div>
-            <a href="#roles" className="flex items-center gap-3 px-4 py-2 rounded-[8px] font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-[#FCFCFD]">
+            <div className="text-[11px] font-bold text-dark-theme dark:text-semi-white uppercase tracking-wider mb-1">Workspace</div>
+            <a href="#roles" className="flex items-center gap-3 px-4 py-2 rounded-lg font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-semi-white">
               <HiOutlineShieldCheck className="w-5 h-5" /> User Roles
             </a>
-            <a href="#about" className="flex items-center gap-3 px-4 py-2 rounded-[8px] font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-[#FCFCFD]">
+            <a href="#about" className="flex items-center gap-3 px-4 py-2 rounded-lg font-sans text-[14px] font-normal text-[#78766F] transition-colors hover:bg-gray-100 dark:hover:bg-[#1A3D91] dark:hover:text-semi-white">
               <HiOutlineOfficeBuilding className="w-5 h-5" /> About Synkra
             </a>
           </div>
 
           {/* Need Help Widget */}
-          <div className="mt-4 p-4 rounded-xl bg-gradient-to-br from-[#EBF2FD] to-white dark:from-[#081D5B] dark:to-[#131210] border border-gray-100 dark:border-zinc-800">
-            <FaHeadset className="w-6 h-6 text-[#1A56DB] dark:text-[#75A2F0] mb-3" />
-            <h4 className="font-sans font-bold text-[14px] text-[#1A56DB] dark:text-[#75A2F0] mb-1">Need Help?</h4>
-            <p className="font-sans text-[12px] text-[#514F4A] dark:text-[#CBC9C2]">Contact Customer Service</p>
+          <div className="mt-4 p-4 rounded-xl bg-linear-to-br from-[#EBF2FD] to-white dark:from-[#081D5B] dark:to-dark-theme border border-gray-100 dark:border-zinc-800">
+            <FaHeadset className="w-6 h-6 text-primary-blue dark:text-[#75A2F0] mb-3" />
+            <h4 className="font-sans font-bold text-[14px] text-primary-blue dark:text-[#75A2F0] mb-1">Need Help?</h4>
+            <p className="font-sans text-[12px] text-medium-gray dark:text-[#CBC9C2]">Contact Customer Service</p>
           </div>
 
         </div>
