@@ -16,6 +16,7 @@ import FeatureGridSection from './components/FeatureGridSection/FeatureGridSecti
 import ValuesBento from './components/ValuesBento/ValuesBento.jsx';
 import TrustSection from './components/TrustSection/TrustSection.jsx';
 import LandingCtaSection from './components/LandingCtaSection/LandingCtaSection';
+import StatsSection from './components/StatsSection/StatsSection.jsx';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,8 +31,8 @@ function App() {
       <button className='p-6 border bg-amber-50' onClick={() => {
         toggleTheme();
       }}>changeTheme</button>
-
       <HeroSection />
+      <StatsSection />
       
       <ValuesBento />
       <TrustSection />
