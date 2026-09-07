@@ -14,6 +14,7 @@ import { AboutFeatureGrid } from './components/AboutFeatureGrid/AboutFeatureGrid
 import { featureGridTitle, featureGridSubtitle, featureGridHeaderButton, featureGridData } from './data/aboutFeatureGridData.js';
 import FeatureGridSection from './components/FeatureGridSection/FeatureGridSection.jsx';
 import ValuesBento from './components/ValuesBento/ValuesBento.jsx';
+import LandingCtaSection from './components/LandingCtaSection/LandingCtaSection';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,6 +36,7 @@ function App() {
       <FeatureGridSection />
       <FAQSection />
       <TestimonialsSection />
+  
       
       <AboutFeatureGrid 
         title={featureGridTitle}
@@ -42,6 +44,8 @@ function App() {
         headerButtonObj={featureGridHeaderButton}
         employees={featureGridData}
       />
+
+      <LandingCtaSection/>
     </>
   );
 }
