@@ -3,6 +3,7 @@ import {FAQList,FAQTitle,FAQSubtitle} from '../../data/faqData.js';
 import FAQItem from "./FAQItem.jsx";
 import FAQHeader from "./FAQHeader.jsx";
 import {useTheme} from "../../context/ThemeContext.jsx";
+
 export default function FAQSection(){
     const {theme} = useTheme();
     return (
