@@ -12,6 +12,7 @@ import HeroSection from "./components/hero-section/heroSection";
 import TrustSection from './components/TrustSection/TrustSection.jsx';
 import LandingCtaSection from './components/LandingCtaSection/LandingCtaSection';
 import StatsSection from './components/StatsSection/StatsSection.jsx';
+import FeaturesHeroSection from './components/FeaturesPageHeroSection/FeaturesHeroSection.jsx';
 import DeveloperSdkSection from "./components/DeveloperSdk/DeveloperSdkSection";
 
 function App() {
@@ -37,8 +38,8 @@ function App() {
           headerButtonObj={featureGridHeaderButton}
           employees={featureGridData}
         />
-
         <LandingCtaSection />
+        <FeaturesHeroSection/>
         <DeveloperSdkSection />
       </main>
     </>
