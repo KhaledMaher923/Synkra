@@ -4,11 +4,11 @@ import { RootLayout } from "../layouts/RootLayout";
 import { Signin } from "../pages/auth/Signin";
 import { Signup } from "../pages/auth/Signup";
 import { Solutions } from "../pages/Solutions";
-import { Platform } from "../pages/platform";
+import { Platform } from "../pages/Platform";
 import { Changelog } from "../pages/Changelog";
 import { Pricing } from "../pages/Pricing";
-import { About } from "../pages/resources/about";
-import { Blog } from "../pages/resources/blog";
+import { About } from "../pages/resources/About";
+import { Blog } from "../pages/resources/Blog";
 import { BlogDetails } from "../pages/resources/BlogDetails";
 import { NotFound } from "../pages/NotFound";
 
