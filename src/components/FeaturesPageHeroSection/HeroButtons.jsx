@@ -6,7 +6,7 @@ function HeroButtons() {
     const { theme } = useTheme();
 
     return (
-        <div className="flex justify-center gap-4 max-md:flex-col max-md:items-stretch" >
+        <div className="flex justify-center gap-4 w-full max-lg:flex-col max-lg:items-stretch" >
             <button className="flex justify-center items-center gap-2 bg-primary-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition" >
                 <span>{buttons.primary}</span>
                 <Megaphone size={16} weight="duotone" className="text-white shrink-0" />
