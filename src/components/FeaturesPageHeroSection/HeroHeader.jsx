@@ -17,15 +17,15 @@ function HeroHeader() {
                 <span className="tracking-wide uppercase"> {badge.description} </span>
             </span>
 
-            <h1 className="text-5xl lg:text-7xl font-header leading-tight mb-6" >
+            <h1 className="text-[80px] lg:text-7xl font-header leading-tight mb-6" >
                 {headline.normal}{" "}
                 <span className="italic text-primary-blue" > {headline.highlight} </span>{" "}
                 {headline.description}
             </h1>
 
-            <p className="max-w-165 text-lg max-lg:text-base font-sans" >
+            <p className="max-w-165 text-[20px] leading-[150%] max-lg:text-base DMsans max-w-205" >
                 <span className="font-bold italic" > {subheadline.bold} </span>
-                {subheadline.description}
+                {subheadline.text}
             </p>
         </div>
     );
