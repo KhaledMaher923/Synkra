@@ -25,7 +25,7 @@ function HeroHeader() {
 
             <p className="max-w-165 text-lg max-lg:text-base font-sans" >
                 <span className="font-bold italic" > {subheadline.bold} </span>
-                {headline.description}
+                {subheadline.description}
             </p>
         </div>
     );
