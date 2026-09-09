@@ -13,6 +13,7 @@ import TrustSection from './components/TrustSection/TrustSection.jsx';
 import LandingCtaSection from './components/LandingCtaSection/LandingCtaSection';
 import StatsSection from './components/StatsSection/StatsSection.jsx';
 import FeaturesHeroSection from './components/FeaturesPageHeroSection/FeaturesHeroSection.jsx';
+import DeveloperSdkSection from "./components/DeveloperSdk/DeveloperSdkSection";
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,6 +40,7 @@ function App() {
         />
         <LandingCtaSection />
         <FeaturesHeroSection/>
+        <DeveloperSdkSection />
       </main>
     </>
   );
