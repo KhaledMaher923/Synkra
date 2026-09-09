@@ -8,7 +8,7 @@ function HeroHeader() {
     return (
         <div
             className={
-                `flex flex-col items-center text-center max-w-220 mx-auto ${
+                `flex flex-col items-start text-left lg:items-center lg:text-center max-w-220 mx-auto ${
                 theme === "dark" ? "text-semi-white" : "text-dark-theme"
                 }`}
         >
@@ -17,13 +17,13 @@ function HeroHeader() {
                 <span className="tracking-wide uppercase"> {badge.description} </span>
             </span>
 
-            <h1 className="text-[80px] lg:text-7xl font-header leading-tight mb-6" >
+            <h1 className="text-[80px] lg:text-7xl font-header leading-tight mb-6 max-lg:text-[56px]" >
                 {headline.normal}{" "}
                 <span className="italic text-primary-blue" > {headline.highlight} </span>{" "}
                 {headline.description}
             </h1>
 
-            <p className="max-w-165 text-[20px] leading-[150%] max-lg:text-base DMsans max-w-205" >
+            <p className="lg:max-w-165 text-[20px] leading-[150%] max-lg:text-base DMsans max-w-205 " >
                 <span className="font-bold italic" > {subheadline.bold} </span>
                 {subheadline.text}
             </p>
