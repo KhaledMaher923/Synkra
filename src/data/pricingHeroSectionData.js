@@ -22,7 +22,7 @@ export const paymentOption = [
         badge:"popular",
         title: "pro",
         monthPayment: 49,
-        annualDiscount: 0.1,
+        annualDiscount: 0.3,
         targetedAudience: "For teams shipping reliably and scaling their automation stack.",
         privileges: [
             "Unlimited playbooks",
