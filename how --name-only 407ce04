@@ -41,7 +41,7 @@ Date:   Thu Sep 10 15:07:06 2026 +0300
  .../{ValuesBentoData.js => ValuesBentoData.jsx}    |  18 [32m+[m[31m-[m
  src/data/developerSdkData.js                       |  33 [32m+++[m
  src/data/featuresPageHeroSection.js                |  21 [32m++[m
- src/data/landingCtaSectionData.js                  |   7 [32m+[m
+ src/data/landingCTASectionData.js                  |   7 [32m+[m
  src/data/navigationData.js                         |  13 [32m+[m[31m-[m
  src/data/trustSectionData.js                       |  10 [32m+[m
  src/index.css                                      |   8 [32m+[m
