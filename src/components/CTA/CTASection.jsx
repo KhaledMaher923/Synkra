@@ -1,5 +1,5 @@
-import CTAButtons from "./ctaButtons";
-import CTAHeader from "./ctaheader";
+import CTAButtons from "./CTAButtons";
+import CTAHeader from "./CTAheader";
 import CTAQuote from "./CTAQuote";
 import ctaBg from "../../assets/icons/cta-bg.svg";
 
