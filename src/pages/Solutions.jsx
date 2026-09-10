@@ -5,6 +5,7 @@ import StatsSection from "../components/StatsSection/StatsSection";
 import TestimonialsSection from "../components/Testimonials/TestimonialsSection";
 import FAQSection from "../components/FAQ/FAQSection";
 import LandingCtaSection from "../components/LandingCtaSection/LandingCtaSection";
+import CTASection from "../components/CTA/ctaSection";
 
 
 export function Solutions(){
@@ -17,6 +18,7 @@ export function Solutions(){
             <TestimonialsSection/>
             <FAQSection/>
             <LandingCtaSection/>
+            <CTASection/>
         </>
     );
 }
