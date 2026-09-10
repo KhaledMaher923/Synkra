@@ -1,7 +1,8 @@
-import CTAButtons from "../components/CTA/CTAButtons";
-import CTASection from "../components/CTA/CTASection";
-import CTAQuote from "..components/CTAQuote";
+import CTAButtons from "../CTA/ctaButtons.jsx";
+import CTAQuote from "../CTA/CTAQuote.jsx";
+import CTAHeader from "../CTA/ctaheader.jsx";
 import ctaBg from "../../assets/icons/cta-bg.svg";
+
 
 function CTASection() {
   return (
