@@ -5,14 +5,14 @@ export default function Card({ info }) {
   const { theme } = useTheme();
   const classes =
     info.id == "2"
-      ? "bg-[#1A56DB] text-[#FCFCFD] "
+      ? "bg-primary-blue text-semi-white "
       : theme == "dark"
-        ? "bg-[#131210]"
-        : "bg-[#FCFCFD]";
+        ? "bg-dark-theme"
+        : "bg-semi-white";
 
   return (
     <div
-      className={`border-1 ${theme == "dark" ? "border-[#333230]" : "border-[#E4E3DF]"} rounded-[12px] p-[32px]  ${classes}  `}
+      className={`border ${theme == "dark" ? "border-[#333230]" : "border-[#E4E3DF]"} rounded-xl p-8  ${classes}  `}
     >
       <CardBody
         id={info.id}

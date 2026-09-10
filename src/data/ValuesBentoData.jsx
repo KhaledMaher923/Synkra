@@ -1,6 +1,8 @@
-import Invisible from "../assets/icons/invisible.svg";
-import Protect from "../assets/icons/protect.svg";
-import Branch from "../assets/icons/branch.svg";
+
+import { AiTwotoneEyeInvisible  } from "react-icons/ai";
+import { PiShieldCheckeredDuotone } from "react-icons/pi";
+import { GoGitBranch } from "react-icons/go";
+
 
 const [VBTitle, VBSubtitle] = [
   `What we believe about ops`,
@@ -12,7 +14,9 @@ const VBCardList = [
     badge: {
       bgColorDark: `#333230`,
       bgColor: `#E4E3DF`,
-      icon: Invisible,
+   icon: <AiTwotoneEyeInvisible  className='text-dark-theme hidden-icon text-[22px]'/>,
+      iconDark:<AiTwotoneEyeInvisible  className='text-semi-white hidden-icon-dark text-[22px]'/>
+
     },
     title: `Automation should be invisible`,
     content:
@@ -23,7 +27,8 @@ const VBCardList = [
     badge: {
       bgColorDark: `#081D5B`,
       bgColor: `#EBF2FD`,
-      icon: Protect,
+      icon: <PiShieldCheckeredDuotone className='text-primary-blue text-[22px]' />,
+      iconDark: <PiShieldCheckeredDuotone className='text-[#75A2F0] text-[22px]' />,
     },
     title: `Reliability is a feature`,
     content: `A workflow that fails silently is worse than no
@@ -35,7 +40,8 @@ uptime.`,
     badge: {
       bgColorDark: `#052E1F`,
       bgColor: `#EDFAF3`,
-      icon: Branch,
+      icon: <GoGitBranch className='text-straight-green text-[22px]'/>,
+      iconDark: <GoGitBranch className='text-[#EDFAF3] text-[22px]'/>,
     },
     title: `PMs should own the Ops`,
     content: `If your product manager can't maintain it, we

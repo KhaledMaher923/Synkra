@@ -1,5 +1,5 @@
 
-import { VBTitle, VBSubtitle ,VBCardList} from "../../data/ValuesBentoData.js"
+import { VBTitle, VBSubtitle ,VBCardList} from "../../data/ValuesBentoData.jsx"
 import { useTheme } from "../../context/ThemeContext.jsx";
 import Card from "../ValuesBento/Card/Card.jsx"
 import ValuesBentoHeader from'./ValuesBentoHeader.jsx'

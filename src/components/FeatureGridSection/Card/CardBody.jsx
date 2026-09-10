@@ -10,11 +10,11 @@ const { theme } = useTheme();
   
   return (
     <div
-      className={`flex flex-col justify-between gap-[16px] md:p-[18px] md:gap-[24px] ${imgTop == true ? "md:flex-row" : ""}`}
+      className={`flex flex-col justify-between gap-4 md:p-4.5 md:gap-6 ${imgTop == true ? "md:flex-row" : ""}`}
     >
       {imgTop == true ? <CardImage img={img} imgTop={imgTop} /> : null}
       <div
-        className={`flex flex-col justify-between gap-[16px] ${id == "visual-builder" && theme == "dark" ? "text-[#131210]" : null}`}
+        className={`flex flex-col justify-between gap-4 ${id == "visual-builder" && theme == "dark" ? "text-dark-theme" : null}`}
       >
         <CardBadge badge={badge}/>
         <h1 className="text-[20px] md:text-[28px] whitespace-pre-line font-header font-medium">

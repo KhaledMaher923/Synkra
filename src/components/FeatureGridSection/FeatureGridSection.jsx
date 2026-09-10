@@ -1,4 +1,4 @@
-import {FGSTitle,FGSBadge,FGSSubtitle,StarIcon,FGSCardList} from "../../data/FeatureGridSectionData.js";
+import {FGSTitle,FGSBadge,FGSSubtitle,StarIcon,FGSCardList} from "../../data/FeatureGridSectionData.jsx";
 import Card from "./Card/Card.jsx";
 import FeatureGridSectionHeader from "./FeatureGridSectionHeader.jsx";
 import { useTheme } from "../../context/ThemeContext.jsx";

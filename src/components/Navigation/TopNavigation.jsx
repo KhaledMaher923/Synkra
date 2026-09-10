@@ -1,116 +1,180 @@
-import { useState } from "react";
+// src/components/Navigation/TopNavigation.jsx
+import { useState, useRef, useEffect } from "react";
 import { HiOutlineMenu, HiOutlineChevronDown } from "react-icons/hi";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { navigationLinks } from "../../data/navigationData.js";
 import ThemeToggle from "../UI/ThemeToggle.jsx";
-import lightLogo from "../../assets/icons/synkra-logo-light.svg";
-import darkLogo from "../../assets/icons/synkra-logo-dark.svg";
+import Logo from "../UI/Logo.jsx";
 
 export default function TopNavigation({ onOpenMobileMenu }) {
   const { theme } = useTheme();
   // State to track the currently active link interactively
   const [activeLink, setActiveLink] = useState("solutions");
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsResourcesOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <nav
-      className={`w-full h-[80px] px-[16px] md:px-[64px] flex items-center justify-between transition-colors duration-200 z-40 relative
-        ${theme === "dark" ? "bg-[#131210]" : "bg-[#F5F7F9]"}
-      `}
-    >
-      {/* LEFT SECTION: Mobile Hamburger + Logo */}
-      <div className="flex items-center gap-4">
-        <button
-          className="md:hidden text-2xl focus:outline-none"
-          onClick={onOpenMobileMenu}
-          aria-label="Toggle mobile menu"
-        >
-          <HiOutlineMenu className={theme === "dark" ? "text-[#FCFCFD]" : "text-[#131210]"} />
-        </button>
+    <header className="w-full relative z-40">
+      <nav
+        aria-label="Main Navigation"
+        className={`w-full h-20 px-4 md:px-16 flex items-center justify-between transition-colors duration-200
+          ${theme === "dark" ? "bg-dark-theme" : "bg-light-theme"}
+        `}
+      >
+        {/* LEFT GROUP: Logo + Desktop Links aligned together */}
+        <div className="flex items-center gap-8 lg:gap-12">
+          {/* Mobile Hamburger Button */}
+          <button
+            type="button"
+            className="md:hidden p-1.5 rounded-lg text-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue"
+            onClick={onOpenMobileMenu}
+            aria-label="Open mobile navigation menu"
+          >
+            <HiOutlineMenu className={theme === "dark" ? "text-semi-white" : "text-dark-theme"} />
+          </button>
 
-        <a href="/" className="flex items-center [&>svg]:hidden" aria-label="Synkra Home">
-          <img
-            src={theme === "dark" ? darkLogo : lightLogo}
-            alt="Synkra"
-            className="h-auto w-[115px]"
-          />
-          <svg viewBox="108 16 77 24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" className={theme === "dark" ? "text-[#FCFCFD]" : "text-[#131210]"}>
-            <path d="M121.169 19.005C121.353 18.8435 121.142 18.5565 120.933 18.6843L108.494 26.3017C108.435 26.338 108.398 26.4026 108.398 26.4722V27.7487C108.398 27.8324 108.451 27.9072 108.529 27.9363L110.244 28.57C110.266 28.5782 110.29 28.5824 110.313 28.5824L116.492 28.5824C116.677 28.5824 116.763 28.8108 116.624 28.9326L108.658 35.9376C108.474 36.0991 108.686 36.3861 108.894 36.2583L121.332 28.6416C121.392 28.6049 121.428 28.5394 121.428 28.4691L121.415 27.1921C121.414 27.1093 121.362 27.0355 121.285 27.0066L119.583 26.3728C119.561 26.3644 119.537 26.3602 119.514 26.3602H113.335C113.151 26.3602 113.064 26.1318 113.203 26.01L121.169 19.005Z" fill="url(#logo_gradient)"/>
-            <path d="M129.957 31.078L128.301 35.002L122.817 23.986L121.401 23.386V22.87H127.953V23.41L126.609 23.866L129.957 31.078ZM124.593 39.73C124.073 39.73 123.641 39.586 123.297 39.298C122.961 39.018 122.793 38.63 122.793 38.134C122.793 37.862 122.845 37.63 122.949 37.438C123.061 37.246 123.197 37.094 123.357 36.982C123.517 36.878 123.669 36.826 123.813 36.826C123.949 36.826 124.089 36.858 124.233 36.922C124.385 36.994 124.561 37.062 124.761 37.126C124.969 37.198 125.213 37.234 125.493 37.234C125.773 37.234 126.025 37.19 126.249 37.102C126.473 37.022 126.685 36.862 126.885 36.622C127.085 36.39 127.293 36.05 127.509 35.602L128.829 32.722L129.477 31.162L132.081 23.806L130.809 23.41V22.87H134.709V23.41L133.533 23.842L128.697 35.686C128.249 36.782 127.821 37.622 127.413 38.206C127.013 38.79 126.589 39.19 126.141 39.406C125.701 39.622 125.185 39.73 124.593 39.73Z" fill="currentColor"/>
-            <path d="M140.165 25.03V32.458L141.437 32.998V33.466H135.293V32.998L136.745 32.386V25.522C136.561 25.274 136.345 25.066 136.097 24.898C135.857 24.722 135.549 24.55 135.173 24.382V23.95L139.229 22.546H139.601L140.165 25.03ZM142.565 32.998L143.837 32.458V26.614C143.837 26.246 143.773 25.946 143.645 25.714C143.517 25.474 143.321 25.298 143.057 25.186C142.801 25.066 142.473 25.006 142.073 25.006C141.601 25.006 141.165 25.074 140.765 25.21C140.373 25.346 140.053 25.522 139.805 25.738L139.361 25.27C139.881 24.702 140.349 24.242 140.765 23.89C141.181 23.53 141.569 23.258 141.929 23.074C142.289 22.882 142.645 22.75 142.997 22.678C143.349 22.606 143.721 22.57 144.113 22.57C145.177 22.57 145.965 22.89 146.477 23.53C146.997 24.17 147.257 25.154 147.257 26.482V32.386L148.721 32.998V33.466H142.565V32.998Z" fill="currentColor"/>
-            <path d="M155.844 27.694L157.248 25.942L161.748 32.398L163.02 32.998V33.466H156.84V32.998L157.872 32.506L154.872 28.174H152.988V26.962H155.22L158.7 23.914L157.212 23.41V22.87H162.144V23.41L160.476 23.938L155.844 27.694ZM154.116 32.422L155.436 32.998V33.466H149.256V32.998L150.708 32.386V19.438C150.58 19.278 150.432 19.13 150.264 18.994C150.104 18.85 149.908 18.71 149.676 18.574C149.452 18.43 149.184 18.282 148.872 18.13V17.626L153.936 16.27H154.308L154.116 18.814V32.422Z" fill="currentColor"/>
-            <path d="M171.592 22.678C172.096 22.678 172.456 22.818 172.672 23.098C172.896 23.378 173.008 23.718 173.008 24.118C173.008 24.678 172.828 25.102 172.468 25.39C172.116 25.678 171.724 25.822 171.292 25.822C170.964 25.822 170.692 25.79 170.476 25.726C170.268 25.654 170.068 25.586 169.876 25.522C169.692 25.45 169.468 25.414 169.204 25.414C169.02 25.414 168.836 25.438 168.652 25.486C168.468 25.526 168.292 25.594 168.124 25.69C167.956 25.778 167.792 25.894 167.632 26.038L167.38 25.426C167.828 24.93 168.244 24.51 168.628 24.166C169.012 23.822 169.376 23.542 169.72 23.326C170.064 23.102 170.388 22.938 170.692 22.834C171.004 22.73 171.304 22.678 171.592 22.678ZM168.196 24.994V32.338L169.828 32.998V33.466H163.324V32.998L164.776 32.386V25.522C164.648 25.346 164.508 25.198 164.356 25.078C164.204 24.95 164.036 24.83 163.852 24.718C163.668 24.606 163.456 24.494 163.216 24.382V23.95L167.536 22.546H167.908L168.196 24.994Z" fill="currentColor"/>
-            <path d="M179.883 26.818L179.943 27.826C179.279 27.986 178.739 28.158 178.323 28.342C177.907 28.518 177.587 28.702 177.363 28.894C177.139 29.086 176.983 29.294 176.895 29.518C176.815 29.734 176.775 29.97 176.775 30.226C176.775 30.754 176.887 31.138 177.111 31.378C177.343 31.618 177.639 31.738 177.999 31.738C178.255 31.738 178.483 31.67 178.683 31.534C178.891 31.398 179.055 31.218 179.175 30.994C179.295 30.762 179.355 30.502 179.355 30.214V25.534C179.355 25.046 179.219 24.662 178.947 24.382C178.683 24.094 178.263 23.95 177.687 23.95C177.447 23.95 177.199 23.974 176.943 24.022C176.687 24.07 176.455 24.138 176.247 24.226L176.667 23.41C176.611 23.882 176.551 24.27 176.487 24.574C176.431 24.87 176.371 25.106 176.307 25.282C176.243 25.45 176.163 25.586 176.067 25.69C175.939 25.842 175.755 25.966 175.515 26.062C175.283 26.15 175.035 26.194 174.771 26.194C174.419 26.194 174.147 26.13 173.955 26.002C173.763 25.866 173.667 25.678 173.667 25.438C173.667 25.102 173.823 24.766 174.135 24.43C174.447 24.086 174.863 23.778 175.383 23.506C175.911 23.226 176.499 23.006 177.147 22.846C177.795 22.678 178.459 22.594 179.139 22.594C180.075 22.594 180.807 22.734 181.335 23.014C181.863 23.294 182.235 23.686 182.451 24.19C182.667 24.694 182.775 25.278 182.775 25.942V31.258C182.775 31.458 182.803 31.626 182.859 31.762C182.915 31.89 182.999 31.986 183.111 32.05C183.223 32.114 183.363 32.146 183.531 32.146C183.683 32.146 183.851 32.122 184.035 32.074C184.219 32.018 184.407 31.93 184.599 31.81V32.554C184.159 32.938 183.695 33.238 183.207 33.454C182.727 33.67 182.263 33.778 181.815 33.778C181.263 33.778 180.815 33.674 180.471 33.466C180.135 33.25 179.887 32.95 179.727 32.566C179.567 32.182 179.479 31.73 179.463 31.21L179.583 31.186C179.431 31.762 179.203 32.242 178.899 32.626C178.603 33.01 178.247 33.298 177.831 33.49C177.423 33.682 176.971 33.778 176.475 33.778C175.587 33.778 174.867 33.546 174.315 33.082C173.771 32.61 173.499 31.91 173.499 30.982C173.499 30.534 173.587 30.13 173.763 29.77C173.947 29.402 174.267 29.054 174.723 28.726C175.187 28.398 175.835 28.078 176.667 27.766C177.507 27.454 178.579 27.138 179.883 26.818Z" fill="currentColor"/>
-            <defs>
-              <linearGradient id="logo_gradient" x1="108.398" y1="28" x2="184.599" y2="28" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#1A56DB"/>
-                <stop offset="0.110577" stopColor="#0D9488"/>
-                <stop offset="0.182692" stopColor="#F4A016"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </a>
-      </div>
+          {/* Logo */}
+          <Logo />
 
-      {/* CENTER SECTION: Desktop Links */}
-      <ul className="hidden md:flex items-center gap-8">
-        {navigationLinks.map((link) => {
-          const isActive = activeLink === link.id;
-          return (
-            <li key={link.id} className="relative flex flex-col justify-center h-[80px]">
-              <a
-                href={link.href}
-                onClick={() => setActiveLink(link.id)}
-                className={`flex items-center gap-1 font-sans text-[14px] font-normal leading-[1.75] uppercase transition-colors duration-200
-                  ${isActive 
-                    ? "text-[#1A56DB]" 
-                    : theme === "dark" 
-                      ? "text-[#78766F] hover:text-[#FCFCFD]" 
-                      : "text-[#78766F] hover:text-[#131210]"
-                  }
-                `}
-              >
-                {link.label}
-                {link.hasDropdown && <HiOutlineChevronDown className="w-4 h-4" />}
-              </a>
-              
-              {/* Active State Underline Pinned to Bottom */}
-              {isActive && (
-                <span 
-                  className={`absolute bottom-[24px] left-0 right-0 h-[2px] w-full
-                    ${theme === "dark" ? "bg-[#FCFCFD]" : "bg-[#131210]"}
-                  `} 
-                />
-              )}
-            </li>
-          );
-        })}
-      </ul>
+          {/* Desktop Nav Links (Grouped next to Logo) */}
+          <ul className="hidden md:flex items-center gap-6 lg:gap-8 list-none p-0 m-0">
+            {navigationLinks.map((link) => {
+              const isActive = activeLink === link.id;
 
-      {/* RIGHT SECTION: Theme Toggle + Auth Buttons */}
-      <div className="flex items-center gap-6">
-        
-        <ThemeToggle />
+              // Dropdown Item (Resources)
+              if (link.hasDropdown) {
+                return (
+                  <li
+                    key={link.id}
+                    ref={dropdownRef}
+                    className="relative flex items-center h-20"
+                    onMouseEnter={() => setIsResourcesOpen(true)}
+                    onMouseLeave={() => setIsResourcesOpen(false)}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setIsResourcesOpen((prev) => !prev)}
+                      aria-haspopup="true"
+                      aria-expanded={isResourcesOpen}
+                      className={`flex items-center gap-1 font-sans text-[14px] font-normal leading-[175%] uppercase transition-colors duration-200 cursor-pointer
+                        ${isActive
+                          ? "text-primary-blue"
+                          : theme === "dark"
+                          ? "text-[#78766F] hover:text-semi-white"
+                          : "text-[#78766F] hover:text-dark-theme"
+                        }
+                      `}
+                    >
+                      <span>{link.label}</span>
+                      <HiOutlineChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${isResourcesOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
 
-        {/* Sign In (Desktop Only) */}
-        <a
-          href="/signin"
-          className={`hidden md:block font-sans text-[14px] font-medium transition-colors
-            ${theme === "dark" ? "text-[#2DD4BF] hover:text-[#5EEAD4]" : "text-[#FFA924] hover:text-[#FFB84D]"}
-          `}
-        >
-          Sign In
-        </a>
+                    {/* Desktop Dropdown Menu */}
+                    {isResourcesOpen && (
+                      <div
+                        className={`absolute top-17.5 left-0 w-48 py-2 rounded-lg shadow-xl border transition-colors
+                          ${theme === "dark"
+                            ? "bg-[#1A1917] border-zinc-800 text-semi-white"
+                            : "bg-semi-white border-gray-200 text-dark-theme"
+                          }
+                        `}
+                      >
+                        <ul className="list-none p-0 m-0 flex flex-col">
+                          {link.dropdownItems.map((item) => (
+                            <li key={item.id}>
+                              <a
+                                href={item.href}
+                                onClick={() => {
+                                  setActiveLink(link.id);
+                                  setIsResourcesOpen(false);
+                                }}
+                                className={`block px-4 py-2 text-[14px] font-sans transition-colors
+                                  ${theme === "dark"
+                                    ? "hover:bg-zinc-800 hover:text-[#2DD4BF]"
+                                    : "hover:bg-gray-100 hover:text-primary-blue"
+                                  }
+                                `}
+                              >
+                                {item.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </li>
+                );
+              }
 
-        {/* Sign Up Button Container */}
-        <div className="flex items-center gap-[16px]">
+              // Standard Link Item
+              return (
+                <li key={link.id} className="relative flex flex-col justify-center h-20">
+                  <a
+                    href={link.href}
+                    onClick={() => setActiveLink(link.id)}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`font-sans text-[14px] font-normal leading-[175%] uppercase transition-colors duration-200
+                      ${isActive
+                        ? "text-primary-blue"
+                        : theme === "dark"
+                        ? "text-[#78766F] hover:text-semi-white"
+                        : "text-[#78766F] hover:text-dark-theme"
+                      }
+                    `}
+                  >
+                    {link.label}
+                  </a>
+
+                  {/* Underline Indicator */}
+                  {isActive && (
+                    <span
+                      className={`absolute bottom-6 left-0 right-0 h-0.5 w-full
+                        ${theme === "dark" ? "bg-semi-white" : "bg-dark-theme"}
+                      `}
+                    />
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        {/* RIGHT GROUP: Theme Toggle + Auth Buttons */}
+        <div className="flex items-center gap-4 md:gap-6">
+          <ThemeToggle />
+
+          {/* Sign In Link (Desktop Only) */}
           <a
-            href="/signup"
-            className="flex items-center justify-center w-[128px] h-[44px] px-[20px] py-[8px] rounded-[8px] font-sans text-[14px] font-medium text-white bg-[#1A56DB] hover:bg-blue-700 transition-colors"
+            href="#signin"
+            className={`hidden md:block font-sans text-[14px] font-medium transition-colors
+              ${theme === "dark" ? "text-[#2DD4BF] hover:text-[#5EEAD4]" : "text-single-orange hover:text-[#FFB84D]"}
+            `}
+          >
+            Sign In
+          </a>
+
+          {/* Sign Up Button (Desktop + Mobile) */}
+          <a
+            href="#signup"
+            className="flex items-center justify-center w-32 h-11 px-5 py-2 rounded-lg font-sans text-[14px] font-medium text-white bg-primary-blue hover:bg-blue-700 transition-colors"
           >
             Sign Up
           </a>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
