@@ -1,4 +1,4 @@
-import { LuShieldCheck } from "react-icons/lu";
+import wallOfLove from "../../assets/icons/wall-of-love.svg";
 
 export default function TestmonialsHeaders({ theme, badge, title, subtitle }) {
     return (
@@ -16,7 +16,7 @@ export default function TestmonialsHeaders({ theme, badge, title, subtitle }) {
                             : 'bg-primary-blue/10 text-primary-blue'
                         }`}
                 >
-                    <LuShieldCheck className="w-4 h-4" />
+                    <img src={wallOfLove} alt="" />
                     {badge}
                 </span>
                 <p className={`font-sans text-[16px] leading-relaxed ${theme === 'dark' ? 'text-[#CBC9C2]' : 'text-medium-gray'
