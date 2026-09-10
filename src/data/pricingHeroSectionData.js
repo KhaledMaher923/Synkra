@@ -1,3 +1,11 @@
+import { IoPricetagOutline } from "react-icons/io5";
+import { CiCircleCheck } from "react-icons/ci";
+
+export const icons = {
+    priceIcon: IoPricetagOutline,
+    circlCheckIcon:  CiCircleCheck
+}
+
 export const pageLabel = "synkra pricing";
 
 export const title = "Simple pricing. Serious automation.";
