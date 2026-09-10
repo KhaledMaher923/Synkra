@@ -1,7 +1,8 @@
+import StatsSection from "../../components/StatsSection/StatsSection";
 
 
 export function About(){
     return (
-        <h1>Hello resources About</h1>
+        <StatsSection page='About'/>
     );
 }
