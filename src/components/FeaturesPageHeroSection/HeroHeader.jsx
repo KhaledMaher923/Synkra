@@ -1,6 +1,6 @@
 import { useTheme } from "../../context/ThemeContext.jsx"
 import { badge, headline, subheadline } from "../../data/featuresPageHeroSection.js"
-import { Ruler } from "@phosphor-icons/react"
+import PrecisionEngineering from "../../assets/icons/PrecisionEngineering.svg"
 
 function HeroHeader() {
     const { theme } = useTheme();
@@ -12,9 +12,9 @@ function HeroHeader() {
                 theme === "dark" ? "text-semi-white" : "text-dark-theme"
                 }`}
         >
-            <span className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full mb-6 bg-primary-blue/10 text-primary-blue">
-                <Ruler size={16} weight="duotone" className="text-primary-blue shrink-0" />
-                <span className="tracking-wide uppercase"> {badge.description} </span>
+            <span className="inline-flex items-center gap-1 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full mb-6 bg-primary-blue/10 text-primary-blue">
+                <img src={PrecisionEngineering} alt="" />
+                <span className="tracking-wide uppercase text-[12px]"> {badge.description} </span>
             </span>
 
             <h1 className="text-[80px] lg:text-7xl font-header leading-tight mb-6 max-lg:text-[56px]" >

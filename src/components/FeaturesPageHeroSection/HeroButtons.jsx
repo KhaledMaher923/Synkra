@@ -1,6 +1,6 @@
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { buttons } from "../../data/featuresPageHeroSection.js";
-import { Megaphone } from "@phosphor-icons/react";
+import StartBuilding from "../../assets/icons/StartBuilding.svg"
 
 function HeroButtons() {
     const { theme } = useTheme();
@@ -9,7 +9,7 @@ function HeroButtons() {
         <div className="flex justify-center gap-4 w-full max-lg:flex-col max-lg:items-stretch" >
             <button className="flex justify-center items-center gap-2 bg-primary-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition" >
                 <span>{buttons.primary}</span>
-                <Megaphone size={16} weight="duotone" className="text-white shrink-0" />
+                <img src={StartBuilding} alt="" />
             </button>
 
             <button
