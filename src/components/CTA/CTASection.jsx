@@ -1,6 +1,6 @@
-import CTAButtons from "../CTA/ctaButtons.jsx";
-import CTAQuote from "../CTA/CTAQuote.jsx";
-import CTAHeader from "../CTA/ctaheader.jsx";
+import CTAButtons from "./CTAButtons.jsx";
+import CTAHeader from "./CTAheader.jsx";
+import CTAQuote from "./CTAQuote.jsx";
 import ctaBg from "../../assets/icons/cta-bg.svg";
 
 
