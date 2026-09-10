@@ -4,7 +4,7 @@ export const title = "Simple pricing. Serious automation.";
 
 export const subtitle = "Every plan starts with a 14-day Pro trial free, no card. Start running playbooks today and upgrade when Synkra becomes essential to how you ship."
 
-export const paymentOption = [
+export const paymentOptions = [
     {
         title: "starter",
         monthPayment: 0,
