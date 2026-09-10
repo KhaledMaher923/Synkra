@@ -11,6 +11,7 @@ export const pricingHeroData = {
     },
     paymentOptions : [
         {
+            id: 'starter-xyz',
             title: "starter",
             monthPayment: 0,
             annualDiscount: 0,
@@ -24,6 +25,7 @@ export const pricingHeroData = {
             nextAction: "try it free"
         },
         {
+            id: 'popular-xyz',
             badge:"popular",
             title: "pro",
             monthPayment: 49,
@@ -39,6 +41,7 @@ export const pricingHeroData = {
             nextAction: "try it free"
         },
         {
+            id: 'enterprise-xyz',
             title: "enterprise",
             monthPayment: "custom",
             annualDiscount: 0,
