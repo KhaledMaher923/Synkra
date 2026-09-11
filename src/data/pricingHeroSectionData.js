@@ -1,5 +1,6 @@
 import { IoPricetagOutline } from "react-icons/io5";
 import { CiCircleCheck } from "react-icons/ci";
+import { FaArrowRight } from "react-icons/fa6";
 
 export const pricingHeroData = {
     title : "Simple pricing. Serious automation.",
@@ -7,7 +8,8 @@ export const pricingHeroData = {
     pageLabel : "synkra pricing",
     icons : {
         PriceIcon: IoPricetagOutline,
-        CircleCheckIcon: CiCircleCheck
+        CircleCheckIcon: CiCircleCheck,
+        ArrowIcon:FaArrowRight
     },
     paymentOptions : [
         {
