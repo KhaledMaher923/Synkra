@@ -18,15 +18,15 @@ export default function OpsIntelligenceContent() {
                 theme === "dark" ? "bg-white/10 text-semi-white" : "bg-neutral-stone text-dark-theme"
                 }`}
             >
-                {OISBadge.icon}
+                <img src={OISBadge.icon} alt="OISBadgeIcon" />
                 {OISBadge.text}
             </span>
 
-            <h2 className="font-header text-3xl lg:text-[42px] font-bold leading-tight whitespace-pre-line">
+            <h2 className="font-header text-3xl lg:text-[28px] font-bold leading-tight whitespace-pre-line">
                 {OISHeading}
             </h2>
 
-            <p className="font-sans text-lg max-lg:text-base leading-relaxed">
+            <p className="font-sans lg:text-[16px] max-lg:text-base leading-relaxed">
             <span className="font-bold italic">{OISDescription.bold}</span>
             {OISDescription.text}
             </p>
@@ -35,7 +35,7 @@ export default function OpsIntelligenceContent() {
                 {OISFeatureList.map((feature) => (
                 <li key={feature.id} className="flex items-start gap-3">
                     <PiCheckCircleDuotone className="text-primary-blue text-xl shrink-0 mt-0.5" />
-                    <span className="font-sans text-base">{feature.text}</span>
+                    <span className="font-sans text-base lg:text-[14px]">{feature.text}</span>
                 </li>
         ))}
             </ul>
@@ -49,10 +49,8 @@ export default function OpsIntelligenceContent() {
                 }`}
             >
                 {OISCta.label}
-                {OISCta.icon}
+                {OISCta.icon }
             </a>
-            
-
         </div>
     );
 }

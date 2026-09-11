@@ -1,9 +1,10 @@
-import { PiFlowerLotusDuotone, PiArrowUpRight } from "react-icons/pi";
+import { PiArrowUpRight } from "react-icons/pi";
+import OPSIntelligence from "../assets/icons/OPSIntelligence.svg"
 
 
 const OISBadge = {
     text: "OPS INTELLIGENCE",
-    icon: <PiFlowerLotusDuotone />
+    icon: OPSIntelligence,
 };
 
 const OISHeading = "Your tools generate signals.\nSynkra turns them into decisions.";
@@ -31,7 +32,7 @@ const OISFeatureList = [
 const OISCta = {
     label: "Browse all playbook templates",
     url: "/templates",
-    icon: <PiArrowUpRight />,
+    icon: <PiArrowUpRight className="text-[24px]"/>,
 };
 
 const OISQuote = {
