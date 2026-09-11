@@ -1,17 +1,16 @@
 export const navigationLinks = [
-  { id: "solutions", label: "SOLUTIONS", href: "#solutions" },
-  { id: "platform", label: "PLATFORM", href: "#platform" },
+  { id: "solutions", label: "SOLUTIONS", path: "/" },
+  { id: "platform", label: "PLATFORM", path: "/platform" },
   {
     id: "resources",
     label: "RESOURCES",
-    href: "#resources",
     hasDropdown: true,
     dropdownItems: [
-      { id: "testimonials", label: "Testimonials", href: "#testimonials" },
-      { id: "faq", label: "FAQ", href: "#faq" },
-      { id: "about", label: "About Synkra", href: "#about" },
+      { id: "testimonials", label: "Testimonials", path: "/#testimonials" },
+      { id: "faq", label: "FAQ", path: "/#faq" },
+      { id: "about", label: "About Synkra", path: "/about" },
     ],
   },
-  { id: "changelog", label: "CHANGELOG", href: "#changelog" },
-  { id: "pricing", label: "PRICING", href: "#pricing" },
+  { id: "changelog", label: "CHANGELOG", path: "/changelog" },
+  { id: "pricing", label: "PRICING", path: "/pricing" },
 ];
