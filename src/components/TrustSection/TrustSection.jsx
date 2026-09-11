@@ -9,16 +9,13 @@ const TrustSection = () => {
           {trustSectionData.title}
         </h2>
         
-        {/* حاوية الشركات مع التدرج اللوني */}
         <div className="relative w-full max-w-full">
           
-          {/* تدرج لوني (Fade) لإيحاء السحب - يختفي في الديسكتوب */}
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#F2F1EF] [.dark_&]:from-[#1F1E1C] to-transparent z-10 md:hidden pointer-events-none"></div>
           
-          {/* الحاوية القابلة للسحب */}
         <div className="relative w-full max-w-full">
           
-     
+       
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#F2F1EF] [.dark_&]:from-[#1F1E1C] to-transparent z-10 md:hidden pointer-events-none"></div>
           
         
@@ -35,7 +32,7 @@ const TrustSection = () => {
           
         </div>
 
-   
+     
       </div>
       </div>
     </section>
