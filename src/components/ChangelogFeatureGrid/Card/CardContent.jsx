@@ -20,7 +20,7 @@ const catColor = {
   "BUG FIXES": {
     textColor: "#BE1C1C",
     textColorDark: "#FEF0F0",
-    icon:  <span><PiBug className=" text-[#FEF0F0] text-[20px]" /></span>,
+    icon:  <span><PiBug className=" text-[#BE1C1C] text-[20px]" /></span>,
     iconDark:  <span><PiBug className=" text-[#EDFAF3] text-[20px]" /></span>,
   },
   "CORE INFRASTRUCTURE": {
