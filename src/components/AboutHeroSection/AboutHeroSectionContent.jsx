@@ -5,7 +5,7 @@ export default function AboutHeroSectionContent({ badge, content }) {
   const {theme} = useTheme()
     return (
     <div className={'flex flex-col justify-between items-center gap-[40px] pb-[24px] md:flex-row'}>
-      <div className={'flex flex-col gap-[12px] md:w-[712px]'}>
+      <div className={'flex flex-col gap-[12px] md:w-[712px] items-start'}>
         <CardBadge badge={badge} />
         <h1 className={"text-[56px] font-header leading-[1] md:text-[80px]"}>
           {content.headline.normal}{" "}
