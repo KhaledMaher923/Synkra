@@ -1,6 +1,10 @@
-
+import ChangelogFeatureGrid from "../components/ChangelogFeatureGrid/ChangelogFeatureGrid";
+import CTASection from "../components/CTA/CTASection";
 export function Changelog(){
     return (
-        <h1>Hello Changelog</h1>
+        <>
+        <ChangelogFeatureGrid />
+    <CTASection />
+    </>
     );
 }
