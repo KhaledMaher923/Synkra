@@ -5,7 +5,7 @@ export default function Card({ info }) {
   const { theme } = useTheme();
   const classes =
     info.id == "recovery"
-      ? "bg-primary-blue text-semi-white "
+      ? "bg-blue-card text-semi-white "
       : info.id == "visual-builder"
         ? "bg-[#F4A016]"
         : theme == "dark"
