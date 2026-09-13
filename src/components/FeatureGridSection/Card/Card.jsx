@@ -10,15 +10,15 @@ export default function Card({ info }) {
         ? "bg-[#F4A016]"
         : theme == "dark"
           ? "bg-dark-theme"
-          : "bg-semi-white";
+          : "bg-[#FCFCFD]";
   let gridDesktopView =
     info.id == "analytics"
-      ? "md:col-span-2"
+      ? "lg:col-span-2 sm:col-span-2"
       : info.id == "ops-intelligence"
-        ? "md:col-span-3 "
+        ? "lg:col-span-3 sm:col-span-2"
         : info.id == "integrations"
-          ? "md:col-span-1 md:order-1"
-          : `md:col-span-1 md:${info.id == "access-control" ? "order-2" : "order-0"}`;
+          ? "lg:col-span-1 lg:order-1"
+          : `lg:col-span-1 lg:${info.id == "access-control" ? "order-2" : "order-0"}`;
 
   return (
     <div
