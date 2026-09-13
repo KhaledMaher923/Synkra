@@ -1,0 +1,61 @@
+[33mcommit 407ce040ca37923def43ad642ba1b2a5384ee4cb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mCTA-section[m[33m)[m
+Merge: 1988ea5 4019dfc
+Author: EsraaMousa18 <esra1ali188@gmail.com>
+Date:   Thu Sep 10 15:07:06 2026 +0300
+
+    Resolve conflict in App.jsx
+
+ package-lock.json                                  |  68 [32m+++++[m
+ package.json                                       |   1 [32m+[m
+ src/App.jsx                                        |  36 [32m+[m[31m--[m
+ src/assets/icons/cta-bg.svg                        |   8 [32m+[m
+ src/assets/icons/synkra-logo-icon-light.svg        |  25 [32m+[m[31m-[m
+ src/components/AnnouncementBar/AnnouncementBar.jsx |  22 [32m+[m[31m-[m
+ .../DeveloperSdk/DeveloperSdkSection.jsx           |  60 [32m+++++[m
+ src/components/FAQ/FAQSection.jsx                  |   1 [32m+[m
+ src/components/FeatureGridSection/Card/Card.jsx    |   8 [32m+[m[31m-[m
+ .../FeatureGridSection/Card/CardBadge.jsx          |   4 [32m+[m[31m-[m
+ .../FeatureGridSection/Card/CardBody.jsx           |   4 [32m+[m[31m-[m
+ .../FeatureGridSection/Card/CardFooter.jsx         |   8 [32m+[m[31m-[m
+ .../FeatureGridSection/FeatureGridSection.jsx      |   2 [32m+[m[31m-[m
+ .../FeatureGridSectionHeader.jsx                   |   9 [32m+[m[31m-[m
+ .../FeaturesHeroSection.jsx                        |  20 [32m++[m
+ .../FeaturesPageHeroSection/HeroButtons.jsx        |  31 [32m+++[m
+ .../FeaturesPageHeroSection/HeroHeader.jsx         |  34 [32m+++[m
+ .../LandingCtaSection/LandingCtaSection.jsx        |  65 [32m+++++[m
+ src/components/Navigation/SideDrawer.jsx           | 282 [32m+++++++++++++++[m[31m------[m
+ src/components/Navigation/TopNavigation.jsx        | 250 [32m+++++++++++[m[31m-------[m
+ src/components/StatsSection/BlurBG.jsx             |   9 [32m+[m
+ src/components/StatsSection/StatsSection.jsx       |  43 [32m++++[m
+ src/components/StatsSection/StatsSectionCard.jsx   |  17 [32m++[m
+ src/components/StatsSection/StatsSectionFooter.jsx |  37 [32m+++[m
+ src/components/StatsSection/StatsSectionHeader.jsx |  22 [32m++[m
+ src/components/TrustSection/TrustSection.jsx       |  45 [32m++++[m
+ src/components/UI/Logo.jsx                         |  40 [32m+++[m
+ src/components/ValuesBento/Card/Card.jsx           |   8 [32m+[m[31m-[m
+ src/components/ValuesBento/Card/CardBadge.jsx      |   2 [32m+[m[31m-[m
+ src/components/ValuesBento/Card/CardBody.jsx       |   6 [32m+[m[31m-[m
+ src/components/ValuesBento/ValuesBento.jsx         |   2 [32m+[m[31m-[m
+ ...idSectionData.js => FeatureGridSectionData.jsx} |  34 [32m+[m[31m--[m
+ src/data/StatsSectionData.js                       |  34 [32m+++[m
+ .../{ValuesBentoData.js => ValuesBentoData.jsx}    |  18 [32m+[m[31m-[m
+ src/data/developerSdkData.js                       |  33 [32m+++[m
+ src/data/featuresPageHeroSection.js                |  21 [32m++[m
+ src/data/landingCTASectionData.js                  |   7 [32m+[m
+ src/data/navigationData.js                         |  13 [32m+[m[31m-[m
+ src/data/trustSectionData.js                       |  10 [32m+[m
+ src/index.css                                      |   8 [32m+[m
+ src/layouts/RootLayout.jsx                         |  17 [32m++[m
+ src/main.jsx                                       |   6 [32m+[m[31m-[m
+ src/pages/Changelog.jsx                            |   6 [32m+[m
+ src/pages/NotFound.jsx                             |   6 [32m+[m
+ src/pages/Platform.jsx                             |   6 [32m+[m
+ src/pages/Pricing.jsx                              |   6 [32m+[m
+ src/pages/Solutions.jsx                            |  22 [32m++[m
+ src/pages/auth/Signin.jsx                          |   6 [32m+[m
+ src/pages/auth/Signup.jsx                          |   6 [32m+[m
+ src/pages/resources/About.jsx                      |   7 [32m+[m
+ src/pages/resources/Blog.jsx                       |   7 [32m+[m
+ src/pages/resources/BlogDetails.jsx                |   6 [32m+[m
+ src/routes/AppRoutes.jsx                           |  33 [32m+++[m
+ 53 files changed, 1199 insertions(+), 282 deletions(-)

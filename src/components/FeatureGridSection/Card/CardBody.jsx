@@ -14,7 +14,7 @@ const { theme } = useTheme();
     >
       {imgTop == true ? <CardImage img={img} imgTop={imgTop} /> : null}
       <div
-        className={`flex flex-col justify-between gap-4 ${id == "visual-builder" && theme == "dark" ? "text-dark-theme" : null}`}
+        className={`flex flex-col justify-between items-start gap-4 ${id == "visual-builder" && theme == "dark" ? "text-dark-theme" : null}`}
       >
         <CardBadge badge={badge}/>
         <h1 className="text-[20px] md:text-[28px] whitespace-pre-line font-header font-medium">

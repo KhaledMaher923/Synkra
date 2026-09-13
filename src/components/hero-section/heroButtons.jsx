@@ -9,7 +9,7 @@ function HeroButtons() {
     <div className="flex flex-col gap-3">
       <div className="flex gap-4 max-md:flex-col">
 
-        <button className="w-full md:w-auto flex justify-center items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+        <button className="w-full md:w-auto flex justify-center font-sans-serif items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
         <span> {buttons.primary}</span> 
          <KeyReturn
             size={16} 
@@ -29,7 +29,7 @@ function HeroButtons() {
         
         >
           {buttons.secondary}{" "}
-            <span className="font-bold">{buttons.bold}</span> {" "}
+            <span className="font-bold font-sans-serif">{buttons.bold}</span> {" "}
             {buttons.normal}
         </button>
       </div>

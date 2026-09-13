@@ -12,7 +12,7 @@ import StatsSectionHeader from "./StatsSectionHeader";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import BlurBG from "./BlurBG.jsx";
 
-export default function StatsSection() {
+export default function StatsSection({page='default'}) {
   const { theme } = useTheme();
   return (
     <section
@@ -31,12 +31,13 @@ export default function StatsSection() {
             );
           })}
         </div>
-
+        {page=='default'?
         <StatsSectionFooter
           primaryTxt={PrimaryTxt}
           secondaryTxt={SecondaryTxt}
           footerTxt={FooterTxt}
-        />
+        />: null
+        }
       </div>
     </section>
   );

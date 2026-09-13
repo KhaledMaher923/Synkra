@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext.jsx";
 
 // Import your actual SVG assets from the icons folder
@@ -18,23 +19,23 @@ export default function Logo({ className = "", isIconOnly = false, showCms = fal
   }
 
   return (
-    <a 
-      href="/" 
-      className={`flex items-center gap-1 select-none ${className}`} 
+    <NavLink
+      to="/"
+      className={`flex items-center gap-1 select-none ${className}`}
       aria-label="Synkra Home"
     >
-      <img 
-        src={currentLogo} 
-        alt="Synkra Logo" 
-        className={`${isIconOnly ? "w-6 h-6" : "h-6"} object-contain`} 
+      <img
+        src={currentLogo}
+        alt="Synkra Logo"
+        className={`${isIconOnly ? "w-6 h-6" : "h-6"} object-contain`}
       />
-      
+
       {/* CMS badge for the sidebar */}
       {!isIconOnly && showCms && (
         <span className="text-[10px] uppercase font-sans text-[#78766F] font-bold mt-1.5 ml-1">
           CMS
         </span>
       )}
-    </a>
+    </NavLink>
   );
 }

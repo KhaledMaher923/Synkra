@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { HiArrowRight } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
@@ -30,49 +31,30 @@ export default function AnnouncementBar({
 
   // If dismissed, remove from DOM
   if (!isVisible) return null;
-
+  
   return (
     <aside
       aria-label="Announcement"
-      className={`w-full transition-colors duration-200 z-50
-        px-4 py-3
-        min-h-26.5 md:min-h-17
-        flex items-start justify-between md:items-center md:justify-center relative
-        ${theme === "dark" ? "bg-[#1F1E1C]" : "bg-dark-theme"}
-      `}
+      className={`w-full transition-colors duration-200 z-50 px-4 py-3 min-h-17 flex items-start justify-between min-[921px]:items-center min-[921px]:justify-center relative ${theme === "dark" ? "bg-[#1F1E1C]" : "bg-dark-theme"}`}
     >
-      {/* Centered Content Container */}
-      <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3 text-left md:text-center pr-8 md:pr-0">
-        {/* Main Announcement Message */}
-        <p className="font-sans text-[13px] md:text-[14px] leading-snug md:leading-normal text-semi-white font-normal tracking-tight">
+      <div className="flex flex-col min-[921px]:flex-row items-start min-[921px]:items-center gap-2 min-[921px]:gap-3 text-left min-[921px]:text-center pr-8">
+        <p className="font-sans text-[13px] min-[921px]:text-[14px] leading-snug min-[921px]:leading-normal text-semi-white font-normal tracking-tight">
           {message}
         </p>
-
-        {/* Action Link with Animated Arrow */}
-        <a
-          href={linkHref}
+        <NavLink
+          to={linkHref}
           onClick={onLinkClick}
-          className={`group inline-flex items-center gap-1.5 font-sans text-[13px] md:text-[14px] font-medium transition-colors shrink-0
-            ${theme === "dark" 
-              ? "text-[#2DD4BF] hover:text-[#5EEAD4]" 
-              : "text-single-orange hover:text-[#FFB84D]"}
-          `}
+          className={`group inline-flex items-center gap-1.5 font-sans text-[13px] min-[921px]:text-[14px] font-medium transition-colors shrink-0 ${theme === "dark" ? "text-[#2DD4BF] hover:text-[#5EEAD4]" : "text-single-orange hover:text-[#FFB84D]"}`}
         >
           <span>{linkLabel}</span>
-          <HiArrowRight 
-            className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" 
-            aria-hidden="true" 
-          />
-        </a>
+          <HiArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" />
+        </NavLink>
       </div>
-
-      {/* Dismiss / Close Button */}
       <button
         type="button"
         onClick={() => setIsVisible(false)}
         aria-label="Dismiss announcement"
-        className="text-semi-white/70 hover:text-semi-white transition-colors p-1 rounded-md cursor-pointer 
-          self-start md:self-auto md:absolute md:right-4 top-3 md:top-1/2 md:-translate-y-1/2"
+        className="text-semi-white/70 hover:text-semi-white transition-colors p-1 rounded-md cursor-pointer self-start min-[921px]:self-auto min-[921px]:absolute min-[921px]:right-4 top-3 min-[921px]:top-1/2 min-[921px]:-translate-y-1/2"
       >
         <IoClose className="w-5 h-5" />
       </button>

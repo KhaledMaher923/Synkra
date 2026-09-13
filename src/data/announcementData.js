@@ -4,7 +4,7 @@ export const announcementData = {
   
   // Link label and target
   linkLabel: "See what changed",
-  linkHref: "#changelog", // REPLACE: with your actual route (e.g., "/changelog" or an external URL)
+  linkHref: "/changelog", // Routed to the Changelog page via NavLink
   
   // Storage key if you later want to persist the closed state in localStorage
   storageKey: "synkra_announcement_dismissed",

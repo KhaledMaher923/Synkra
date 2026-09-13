@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Tailwind CSS v4 directive; supported by Tailwind's PostCSS processor. */
+/* stylelint-disable at-rule-no-unknown */
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme {
   --font-sans: 'DM Sans', sans-serif;
   --font-header: 'Newsreader', serif;
@@ -25,6 +28,17 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Mobile/tablet navigation drawer: sits under the 80px header so the
+     Logo/TopNavigation are never covered or overlapped. */
+  .navigation-drawer {
+    top: 80px;
+    height: calc(100vh - 80px);
+  }
+
+  .navigation-overlay {
+    top: 80px;
   }
 }
 .hidden-icon> path:nth-child(1),.hidden-icon> path:nth-child(2)

@@ -1,6 +1,10 @@
+import OpsIntelligenceSection from "../components/OpsIntelligenceSection/OpsIntelligenceSection.jsx";
+
 
 export function Platform(){
     return (
-        <h1>Hello Platform</h1>
+        <>
+            <OpsIntelligenceSection />
+        </>
     );
 }

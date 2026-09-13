@@ -30,7 +30,7 @@ return (
       {headline.description}
     </h1>
 
-      <p className="mt-6 text-xl max-xl:text-base pb-10 font-sans">
+      <p className="mt-6 text-[22px] md:text-[23px] xl:text-[25px] pb-10 font-sans">
         {subheadline.text}
       </p>
     </div>
