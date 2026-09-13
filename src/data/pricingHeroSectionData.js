@@ -15,6 +15,7 @@ export const pricingHeroData = {
         {
             id: 'starter-xyz',
             title: "starter",
+            subtitle: 'For founders and small teams validating their first playbooks.',
             monthPayment: 0,
             annualDiscount: 0,
             targetedAudience: "For founders and small teams validating their first playbooks.",
@@ -30,6 +31,7 @@ export const pricingHeroData = {
             id: 'popular-xyz',
             badge:"popular",
             title: "pro",
+            subtitle:'For teams shipping reliably and scaling their automation stack.',
             monthPayment: 49,
             annualDiscount: 0.3,
             targetedAudience: "For teams shipping reliably and scaling their automation stack.",
@@ -45,6 +47,7 @@ export const pricingHeroData = {
         {
             id: 'enterprise-xyz',
             title: "enterprise",
+            subtitle:'For teams that need audit-grade reliability, SSO, and dedicated support.',
             monthPayment: "custom",
             annualDiscount: 0,
             targetedAudience: "For teams that need audit-grade reliability, SSO, and dedicated support.",

@@ -3,9 +3,11 @@ import TrustSection from "../components/TrustSection/TrustSection";
 import FeatureGridSection from "../components/FeatureGridSection/FeatureGridSection";
 import StatsSection from "../components/StatsSection/StatsSection";
 import TestimonialsSection from "../components/Testimonials/TestimonialsSection";
-import FAQSection from "../components/FAQ/FAQSection";
+import {FAQSection} from "../components/FAQ/FAQSection";
 import LandingCtaSection from "../components/LandingCtaSection/LandingCtaSection";
 import CTASection from "../components/CTA/CTASection";
+import {FAQData} from "../data/faqData"
+
 
 export function Solutions(){
     return (
@@ -15,7 +17,7 @@ export function Solutions(){
             <FeatureGridSection/>
             <StatsSection/>
             <TestimonialsSection/>
-            <FAQSection/>
+            <FAQSection {...FAQData}/>
             <LandingCtaSection/>
             <CTASection/>
         </>
