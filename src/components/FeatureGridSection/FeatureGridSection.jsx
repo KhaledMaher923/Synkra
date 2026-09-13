@@ -8,9 +8,9 @@ export default function FeatureGridSection() {
 
   return (
     <section
-    className={`p-[24px] md:p-[64px] flex flex-col items-center gap-[48px] md:max-w-[100%]
-    ${theme === "dark" ? "bg-dark-theme text-semi-white" : "bg-light-theme text-dark-theme"} 
-    `}
+    className={`p-[24px] lg:p-[64px] flex flex-col items-center gap-[48px] lg:max-w-[100%] 2xl:px-50
+    ${theme === "dark" ? "bg-dark-theme text-semi-white" : "bg-[#F5F7F9] text-dark-theme"} 
+     `}
     >
       <FeatureGridSectionHeader
         badge={FGSBadge}
@@ -18,7 +18,7 @@ export default function FeatureGridSection() {
         subtitle={FGSSubtitle}
         icon={StarIcon}
       />
-      <div className="grid grid-cols-1  gap-[16px] w-full max-w-250 md:grid-cols-3 md:grid-rows-[repeat(3,minmax(400px,fit-content))] md: md:max-w-[100%]">
+      <div className="grid grid-cols-1  gap-[16px] w-full max-w-250 lg:grid-cols-3 lg:grid-rows-[repeat(3,minmax(400px,fit-content))]  lg:max-w-[100%] sm:grid-cols-2">
         {FGSCardList.map((card) => {
           return <Card key={card.id} info={card}></Card>;
         })}

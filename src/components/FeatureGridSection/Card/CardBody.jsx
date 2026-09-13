@@ -10,7 +10,7 @@ const { theme } = useTheme();
   
   return (
     <div
-      className={`flex flex-col justify-between gap-4 md:p-4.5 md:gap-6 ${imgTop == true ? "md:flex-row" : ""}`}
+      className={`flex flex-col justify-between gap-4 md:p-4.5 md:gap-6 ${imgTop == true ? "lg:flex-row" : ""}`}
     >
       {imgTop == true ? <CardImage img={img} imgTop={imgTop} /> : null}
       <div
