@@ -16,7 +16,7 @@ export default function StatsSection({page='default'}) {
   const { theme } = useTheme();
   return (
     <section
-      className={` p-[24px] relative lg:pt-[40px] lg:pb-[40px] lg:pr-[64px] lg:pl-[64px] lg:max-w-[100%]
+      className={` p-[24px] relative lg:pt-[40px] lg:pb-[40px] lg:pr-[64px] lg:pl-[64px] lg:max-w-[100%] 2xl:px-50
     ${theme === "dark" ? "bg-dark-theme text-semi-white" : "bg-[#EBF2FD] text-dark-theme"} 
     `}
     >
