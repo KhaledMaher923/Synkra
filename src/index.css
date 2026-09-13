@@ -84,3 +84,38 @@
 
   pointer-events: none;
 }
+.stats-card
+{
+  position: relative;
+  overflow: hidden;
+}
+.stats-card::after
+{
+  content:"";
+  position: absolute;
+  height:300px;
+  width: calc(100% + 50px);
+  
+  background-color: transparent;
+  background-repeat: no-repeat;
+ z-index: 0;
+  opacity: 0.1;
+}
+.stats-card:nth-child(1)::after,.stats-card:nth-child(3)::after
+{
+background: radial-gradient(circle,#1A56DB, #1A56DB,#1A56DB,transparent,transparent);
+left: -25px;
+  top: 70%;
+}
+.stats-card:nth-child(2)::after
+{
+background: radial-gradient(circle,#F4A016, #F4A016,#F4A016,transparent,transparent,transparent);
+left: -25px;
+  bottom:   70%;
+}
+.stats-card:nth-child(4)::after
+{
+background: radial-gradient(circle,#0D9488, #0D9488,#0D9488,transparent,transparent,transparent);
+left: 70%;
+  top: -25px;
+}
