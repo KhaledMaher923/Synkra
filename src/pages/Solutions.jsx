@@ -18,7 +18,6 @@ export function Solutions(){
             <StatsSection/>
             <TestimonialsSection/>
             <FAQSection {...FAQData}/>
-            <LandingCtaSection/>
             <CTASection/>
         </>
     );
