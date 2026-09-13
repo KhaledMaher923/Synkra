@@ -16,7 +16,6 @@ export function Solutions(){
             <StatsSection/>
             <TestimonialsSection/>
             <FAQSection/>
-            <LandingCtaSection/>
             <CTASection/>
         </>
     );
