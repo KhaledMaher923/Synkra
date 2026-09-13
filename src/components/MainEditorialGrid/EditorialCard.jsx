@@ -1,17 +1,17 @@
 export default function EditorialCard({ article, isFeatured = false, isDark = false }) {
   if (isFeatured) {
     return (
-      <article className={`lg:col-span-2 flex flex-col lg:flex-row border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow ${
+      <article className={`lg:col-span-2 p-6 lg:p-8 flex flex-col lg:flex-row gap-6 lg:gap-8 border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 ${
         isDark ? 'bg-[#1C1B18] border-neutral-800' : 'bg-[#FCFCFD] border-[#E4E3DF]'
       }`}>
-        <div className="w-full lg:w-1/2 h-64 lg:h-auto min-h-[300px] max-h-[380px] overflow-hidden shrink-0">
+        <div className="w-full lg:w-1/2 rounded-xl overflow-hidden shrink-0 aspect-[16/10] lg:aspect-auto min-h-[240px] lg:min-h-[300px]">
           <img 
             src={article.image} 
             alt={article.title} 
             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           />
         </div>
-        <div className="p-6 lg:p-8 lg:w-1/2 flex flex-col justify-between space-y-6">
+        <div className="lg:w-1/2 flex flex-col justify-between space-y-6">
           <div className="space-y-3">
             <span className={`font-sans text-[12px] font-normal tracking-wider uppercase ${
               isDark ? 'text-blue-400' : 'text-[#1A56DB]'
@@ -55,17 +55,17 @@ export default function EditorialCard({ article, isFeatured = false, isDark = fa
   }
 
   return (
-    <article className={`flex flex-col border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow ${
+    <article className={`p-6 flex flex-col gap-4 border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 ${
       isDark ? 'bg-[#1C1B18] border-neutral-800' : 'bg-[#FCFCFD] border-[#E4E3DF]'
     }`}>
-      <div className="h-48 w-full overflow-hidden shrink-0">
+      <div className="w-full aspect-[16/10] rounded-xl overflow-hidden shrink-0">
         <img 
           src={article.image} 
           alt={article.title} 
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
       </div>
-      <div className="p-6 flex flex-col flex-1 justify-between space-y-4">
+      <div className="flex flex-col flex-1 justify-between space-y-4">
         <div className="space-y-2">
           <span className={`font-sans text-[12px] font-normal tracking-wider uppercase ${
             isDark ? 'text-blue-400' : 'text-[#1A56DB]'
