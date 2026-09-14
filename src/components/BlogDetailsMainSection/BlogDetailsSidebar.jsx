@@ -8,7 +8,7 @@ export default function BlogDetailsSidebar() {
     const isDark = theme === "dark";
 
     return (
-        <aside className="flex flex-col gap-6 w-full lg:w-80 shrink-0">
+        <aside className="flex sticky flex-col gap-6 w-full lg:w-80 shrink-0">
             <nav
                 className={`rounded-2xl p-6 border ${
                     isDark ? "bg-[#1C1B18] border-neutral-800" : "bg-[#FCFCFD] border-[#E4E3DF]"

@@ -41,7 +41,5 @@ export default function BlogDetailsHeader() {
                 </div>
             </div> 
         </header>
-
     );
-
 }
