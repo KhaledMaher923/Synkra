@@ -1,13 +1,13 @@
-const [SSTitle, SSSubtitle] = [
-  `Synkra teams move reliably, and faster.`,
-  `Measured across live teams using Synkra's built-in run tracking and time saved reports, not estimated.`,
-];
+const SSHeaderContent = {
+  title:`Synkra teams move reliably, and faster.`,
+  subtitle:`Measured across live teams using Synkra's built-in run tracking and time saved reports, not estimated.`,
+};
 
-const [PrimaryTxt, SecondaryTxt, FooterTxt] = [
-  "Create an Account",
-  "Talk to our team instead",
-  `Ship your first live playbook in 10 minutes. No credit card, no setup call required.`,
-];
+const SSFooterContent= {
+  primaryTxt:"Create an Account",
+  secondaryTxt:"Talk to our team instead",
+  footerTxt:`Ship your first live playbook in 10 minutes. No credit card, no setup call required.`,
+};
 
 const SSCardList = [
   {
@@ -31,4 +31,4 @@ const SSCardList = [
     number: `12ms`,
   },
 ];
-export { SSTitle, SSSubtitle,PrimaryTxt, SecondaryTxt, FooterTxt ,SSCardList};
+export {SSHeaderContent,SSFooterContent ,SSCardList};
