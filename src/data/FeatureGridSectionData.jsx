@@ -12,12 +12,20 @@ import {
 
 import { TbSwitchHorizontal } from "react-icons/tb";
 
-const [FGSTitle, FGSBadge, FGSSubtitle, StarIcon] = [
-  "An Ops Brain that Actually Shows its Work",
-  "What makes Synkra different %",
-  "Most tools fire automations and hope for the best. Synkra treats every workflow as a first class system, it listens, decides, acts, and records exactly what happened. So your team can trust the result",
-  <PiShootingStarDuotone />,
-];
+const FGSHeaderContent ={
+title : "An Ops Brain that Actually Shows its Work",
+subtitle:"Most tools fire automations and hope for the best. Synkra treats every workflow as a first class system, it listens, decides, acts, and records exactly what happened. So your team can trust the result",
+badge: {
+      text: "What makes Synkra different %",
+      bgColorDark: "#081D5B",
+      textColorDark: "#75A2F0",
+      bgColor: "#EBF2FD",
+      textColor: "#1a56db",
+      icon: <PiShootingStarDuotone />,
+      iconDark: <PiShootingStarDuotone />,
+    },
+
+}
 const FGSCardList = [
   {
     id: "analytics",
@@ -107,4 +115,4 @@ const FGSCardList = [
     content: `Control who can design playbooks, who can publish them, and who can only see outcomes. Ships with sensible defaults for growing teams and scales to stricter enterprise policies.`,
   },
 ];
-export { FGSTitle, FGSBadge, FGSSubtitle, FGSCardList, StarIcon };
+export { FGSHeaderContent, FGSCardList};
