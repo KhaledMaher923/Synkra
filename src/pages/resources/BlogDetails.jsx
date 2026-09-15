@@ -1,6 +1,7 @@
+import BlogSection from "../../components/BlogDetailContainer/BlogSection.jsx";
 
-export function BlogDetails(){
-    return (
-        <h1>Hello resources BlogDetails</h1>
-    );
+export function BlogDetails() {
+  return (
+    <BlogSection />
+  );
 }
