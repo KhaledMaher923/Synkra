@@ -7,9 +7,10 @@ import {
    HiOutlineDocumentText,
    HiOutlineLightningBolt,
    HiOutlineTag,
-   HiOutlineShieldCheck,
    HiOutlineOfficeBuilding,
-   HiOutlineViewList
+   HiOutlineNewspaper,
+   HiOutlineDocumentSearch,
+   HiOutlineX
 } from "react-icons/hi";
 import { FaHeadset } from "react-icons/fa6";
 import { useTheme } from "../../context/ThemeContext.jsx";
@@ -23,7 +24,7 @@ const cmsMenuGroups = [
     items: [
       { id: "platform", path: "/platform", label: "Platform", icon: HiOutlineHome },
       { id: "solutions", path: "/", label: "Solutions", icon: HiOutlineTrendingUp },
-      { id: "resources", path: "/about", label: "Resources", icon:   HiOutlineLightningBolt },
+      { id: "resources", path: "/about", label: "Resources", icon: HiOutlineLightningBolt },
     ]
   },
   {
@@ -31,13 +32,13 @@ const cmsMenuGroups = [
     items: [
       { id: "changelog", path: "/changelog", label: "Changelog", icon: HiOutlineDocumentText },
       { id: "pricing", path: "/pricing", label: "Pricing", icon: HiOutlineTag },
-      {id:"faq", path: "/faq", label: "FAQ", icon: HiOutlineViewList,isActive: false },
+      { id: "blog", path: "/blog", label: "Blog", icon: HiOutlineNewspaper },
+      { id: "blog-detail", path: "/blog-detail", label: "Blog Details", icon: HiOutlineDocumentSearch },
     ]
   },
   {
     title: "WORKSPACE",
     items: [
-      { id: "roles", label: "User Roles", icon: HiOutlineShieldCheck },
       { id: "about", path: "/about", label: "About Synkra", icon: HiOutlineOfficeBuilding },
     ]
   }
@@ -71,29 +72,37 @@ export default function SideDrawer({ isOpen, onClose, isMobile, isCompact, onTog
 
   return (
     <>
-      {/* Background Dim Overlay - min-[921px]:hidden ensures it only shows on tablet/mobile */}
+      {/* Background Dim Overlay — starts below the 80px header (.navigation-overlay),
+          sits at z-30 so it is under the drawer (z-40) and under the header (z-50).
+          Clicking it always closes the drawer. min-[921px]:hidden keeps it mobile/tablet only. */}
       {isOpen && (
         <div
-          className="navigation-overlay fixed inset-x-0 bottom-0 bg-black/50 z-40 transition-opacity min-[921px]:hidden"
+          className="navigation-overlay fixed inset-x-0 bottom-0 bg-black/50 z-30 transition-opacity min-[921px]:hidden"
           onClick={onClose}
           aria-hidden="true"
         />
       )}
 
-      {/* Main Sidebar Container - Sits exactly under the header via .navigation-drawer, so the Logo up top never overlaps */}
+      {/* Main Sidebar Container — .navigation-drawer pins it to top:80px, so it sits
+          cleanly UNDER the Top Navbar and never covers the logo or the hamburger/close toggle. */}
       <aside
         ref={drawerRef}
         id="side-navigation"
         inert={!isOpen ? "true" : undefined}
         aria-label="Mobile Navigation"
-        className={`navigation-drawer fixed left-0 z-50 flex flex-col transition-all duration-300 ease-in-out border-r shadow-xl
+        className={`navigation-drawer fixed left-0 z-40 flex flex-col transition-all duration-300 ease-in-out border-r shadow-xl
           ${theme === "dark" ? "bg-dark-theme border-zinc-800 text-semi-white" : "bg-semi-white border-gray-200 text-dark-theme"}
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           ${isCompact ? "w-22" : "w-84"} max-w-[85vw] min-[921px]:hidden
         `}
       >
-        {/* HEADER: compact toggle + Logo only — closing is already handled by the header hamburger (it becomes an X) and by clicking outside/Escape */}
-        <div className={`flex items-center p-4 shrink-0 ${isCompact ? "flex-col gap-6" : "flex-row gap-4"}`}>
+        {/* HEADER: compact/stretch toggle + Logo + a dedicated Close (X) button.
+            In the expanded state they sit on one row with the X pushed to the far
+            right by ml-auto; in compact they stack in a column. Either way each
+            control is shrink-0 with its own box, so the X never overlaps the Logo
+            or the stretch/compact slider. Closing also still works from the header
+            hamburger (which becomes an X), the overlay, and Escape. */}
+        <div className={`flex items-center p-4 shrink-0 ${isCompact ? "flex-col gap-4" : "flex-row gap-4"}`}>
           <button
             type="button"
             onClick={onToggleCompact}
@@ -108,7 +117,18 @@ export default function SideDrawer({ isOpen, onClose, isMobile, isCompact, onTog
             </svg>
           </button>
 
-          <Logo isIconOnly={isCompact} showCms={true} />
+          <Logo isIconOnly={isCompact} showCms={true} className="shrink-0" />
+
+          <button
+            type="button"
+            onClick={onClose}
+            className={`flex items-center justify-center w-9 h-9 rounded-lg border transition-colors shrink-0 ${isCompact ? "" : "ml-auto"}
+              ${theme === "dark" ? "border-zinc-700 hover:bg-zinc-800 text-semi-white" : "border-gray-300 hover:bg-gray-100 text-dark-theme"}
+            `}
+            aria-label="Close navigation menu"
+          >
+            <HiOutlineX className="w-5 h-5" />
+          </button>
         </div>
 
         {/* SCROLLABLE CONTENT */}

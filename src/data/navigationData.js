@@ -6,8 +6,8 @@ export const navigationLinks = [
     label: "RESOURCES",
     hasDropdown: true,
     dropdownItems: [
-      { id: "testimonials", label: "Testimonials", path: "/#testimonials" },
-      { id: "faq", label: "FAQ", path: "/#faq" },
+      { id: "blog", label: "Blog", path: "/blog" },
+      { id: "blog-detail", label: "Blog Details", path: "/blog-detail" },
       { id: "about", label: "About Synkra", path: "/about" },
     ],
   },
