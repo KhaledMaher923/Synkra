@@ -10,17 +10,17 @@ const { theme } = useTheme();
   
   return (
     <div
-      className={`flex flex-col justify-between gap-4 md:p-4.5 md:gap-6 ${imgTop == true ? "lg:flex-row" : ""}`}
+      className={`flex flex-col justify-between gap-4 lg:p-4.5 lg:gap-6 ${imgTop == true ? "lg:flex-row" : ""}`}
     >
       {imgTop == true ? <CardImage img={img} imgTop={imgTop} /> : null}
       <div
         className={`flex flex-col justify-between items-start gap-4 ${id == "visual-builder" && theme == "dark" ? "text-dark-theme" : null}`}
       >
         <CardBadge badge={badge}/>
-        <h1 className="text-[20px] md:text-[28px] whitespace-pre-line font-header font-medium">
+        <h1 className="text-[20px] lg:text-[28px] whitespace-pre-line font-header font-medium">
           {title}
         </h1>
-        <p className="md:text-[16px] ">{content}</p>
+        <p className="lg:text-[16px] ">{content}</p>
         {footer ? <CardFooter footer={footer} /> : null}
       </div>
       {imgTop == false ? ( <CardImage img={img} imgTop={imgTop}/>

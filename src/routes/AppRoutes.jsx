@@ -10,6 +10,13 @@ import { Pricing } from "../pages/Pricing";
 import { About } from "../pages/resources/About";
 import { Blog } from "../pages/resources/Blog";
 import { BlogDetails } from "../pages/resources/BlogDetails";
+import { PrivacyPolicy } from "../pages/PrivacyPolicy";
+import { TermsOfService } from "../pages/TermsOfService";
+import { CookiePolicy } from "../pages/CookiePolicy";
+import { HelpCenter } from "../pages/HelpCenter";
+import { Careers } from "../pages/Careers";
+import { AppIntegrations } from "../pages/AppIntegrations";
+import { PartnerProgram } from "../pages/PartnerProgram";
 import { NotFound } from "../pages/NotFound";
 
 
@@ -24,10 +31,21 @@ export function AppRoutes(){
                 <Route path="/blog-detail" element={<BlogDetails/>} />
                 <Route path="/changelog" element={<Changelog/>} />
                 <Route path="/pricing" element={<Pricing/>} />
+
+                {/* Footer links */}
+                <Route path="/privacy" element={<PrivacyPolicy/>} />
+                <Route path="/terms" element={<TermsOfService/>} />
+                <Route path="/cookie-policy" element={<CookiePolicy/>} />
+                <Route path="/help" element={<HelpCenter/>} />
+                <Route path="/jobs" element={<Careers/>} />
+                <Route path="/integrations" element={<AppIntegrations/>} />
+                <Route path="/partners" element={<PartnerProgram/>} />
+
+                {/* Inside the layout so a 404 still renders the navbar + footer. */}
+                <Route path="*" element={<NotFound/>}/>
             </Route>
             <Route path="/signin" element={<Signin/>}/>
             <Route path="/signup" element={<Signup/>}/>
-            <Route path="*" element={<NotFound/>}/>
         </Routes>
     );
 }

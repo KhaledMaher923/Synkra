@@ -24,18 +24,22 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
   }, []);
 
   return (
-    <header className="w-full relative z-40">
+    // z-50 keeps the header — and therefore the hamburger/close toggle — above the
+    // drawer (z-40) and its overlay (z-30), so the toggle stays clickable while open.
+    <header className="w-full relative z-50">
       <nav
         aria-label="Main Navigation"
-        className={`w-full h-20 px-4 min-[921px]:px-16 flex items-center justify-between transition-colors duration-200 ${theme === "dark" ? "bg-dark-theme" : "bg-light-theme"}`}
+        className={`w-full h-20 px-4 min-[921px]:px-16 flex items-center justify-between gap-4 transition-colors duration-200 ${theme === "dark" ? "bg-dark-theme" : "bg-light-theme"}`}
       >
-        {/* LEFT GROUP: Hamburger + Logo */}
-        <div className="flex items-center gap-3 min-[921px]:gap-12">
+        {/* LEFT GROUP: Hamburger + Logo + Desktop links.
+            min-w-0 makes THIS group the only part that absorbs the squeeze while
+            resizing; the logo inside it is still shrink-0, so it never squashes. */}
+        <div className="flex items-center min-w-0 gap-3 min-[921px]:gap-6 min-[1200px]:gap-12">
 
           {/* Mobile Hamburger / Close Button - Visible up to 920px */}
           <button
             type="button"
-            className="min-[921px]:hidden p-1.5 rounded-lg text-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue"
+            className="min-[921px]:hidden shrink-0 p-1.5 rounded-lg text-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue"
             onClick={onOpenMobileMenu}
             aria-controls="side-navigation"
             aria-expanded={isMobileMenuOpen}
@@ -49,10 +53,12 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
           </button>
 
           {/* Logo Component - Never shrinks, always full size */}
-          <Logo isIconOnly={false} />
+          <Logo isIconOnly={false} className="shrink-0 whitespace-nowrap" />
 
-          {/* Desktop Nav Links - Hidden up to 920px */}
-          <ul className="max-[920px]:hidden flex items-center gap-4 min-[1200px]:gap-8 list-none p-0 m-0">
+          {/* Desktop Nav Links - Hidden up to 920px.
+              These are the flexible part: the gap tightens between 921px and 1200px
+              instead of the logo or the auth buttons getting compressed. */}
+          <ul className="max-[920px]:hidden flex items-center min-w-0 gap-4 min-[1200px]:gap-8 list-none p-0 m-0">
             {navigationLinks.map((link) => {
               const isActive = link.hasDropdown
                 ? link.dropdownItems.some((item) => location.pathname + location.hash === item.path)
@@ -63,7 +69,7 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
                   <li
                     key={link.id}
                     ref={dropdownRef}
-                    className="relative flex items-center h-20"
+                    className="relative flex items-center h-20 shrink-0"
                     onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setIsResourcesOpen(false); }}
                     onKeyDown={(event) => { if (event.key === "Escape") { setIsResourcesOpen(false); dropdownRef.current?.querySelector("button")?.focus(); } }}
                   >
@@ -72,12 +78,12 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
                       onClick={() => setIsResourcesOpen((prev) => !prev)}
                       aria-controls="resources-navigation"
                       aria-expanded={isResourcesOpen}
-                      className={`flex items-center gap-1 font-sans text-[14px] font-normal leading-[175%] uppercase transition-colors duration-200 cursor-pointer ${
+                      className={`flex items-center gap-1 whitespace-nowrap font-sans text-[14px] font-normal leading-[175%] uppercase transition-colors duration-200 cursor-pointer ${
                         isActive ? "text-primary-blue" : theme === "dark" ? "text-[#78766F] hover:text-semi-white" : "text-[#78766F] hover:text-dark-theme"
                       }`}
                     >
                       <span>{link.label}</span>
-                      <HiOutlineChevronDown className={`w-4 h-4 transition-transform duration-200 ${isResourcesOpen ? "rotate-180" : ""}`} />
+                      <HiOutlineChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-200 ${isResourcesOpen ? "rotate-180" : ""}`} />
                     </button>
 
                     {isResourcesOpen && (
@@ -89,7 +95,7 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
                                 to={item.path} end
                                 aria-current={location.pathname + location.hash === item.path ? "page" : "false"}
                                 onClick={() => setIsResourcesOpen(false)}
-                                className={`block aria-[current=page]:text-primary-blue px-4 py-2 text-[14px] font-sans transition-colors ${theme === "dark" ? "hover:bg-zinc-800 hover:text-[#2DD4BF]" : "hover:bg-gray-100 hover:text-primary-blue"}`}
+                                className={`block whitespace-nowrap aria-[current=page]:text-primary-blue px-4 py-2 text-[14px] font-sans transition-colors ${theme === "dark" ? "hover:bg-zinc-800 hover:text-[#2DD4BF]" : "hover:bg-gray-100 hover:text-primary-blue"}`}
                               >
                                 {item.label}
                               </NavLink>
@@ -103,11 +109,11 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
               }
 
               return (
-                <li key={link.id} className="relative flex flex-col justify-center h-20">
+                <li key={link.id} className="relative flex flex-col justify-center h-20 shrink-0">
                   <NavLink
                     to={link.path} end
                     aria-current={isActive ? "page" : "false"}
-                    className={`font-sans text-[14px] font-normal leading-[175%] uppercase transition-colors duration-200 ${
+                    className={`font-sans whitespace-nowrap text-[14px] font-normal leading-[175%] uppercase transition-colors duration-200 ${
                       isActive ? "text-primary-blue" : theme === "dark" ? "text-[#78766F] hover:text-semi-white" : "text-[#78766F] hover:text-dark-theme"
                     }`}
                   >
@@ -122,20 +128,20 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
           </ul>
         </div>
 
-        {/* RIGHT GROUP: Theme Toggle + Auth Buttons */}
-        <div className="flex items-center gap-2 min-[921px]:gap-6 shrink-0">
+        {/* RIGHT GROUP: Theme Toggle + Auth Buttons — fully protected from squeezing */}
+        <div className="flex items-center shrink-0 whitespace-nowrap gap-2 min-[921px]:gap-4 min-[1200px]:gap-6">
           <ThemeToggle />
 
           <NavLink
             to="/signin"
-            className={`max-[920px]:hidden font-sans text-[14px] font-medium transition-colors ${theme === "dark" ? "text-[#2DD4BF] hover:text-[#5EEAD4]" : "text-single-orange hover:text-[#FFB84D]"}`}
+            className={`max-[920px]:hidden shrink-0 whitespace-nowrap font-sans text-[14px] font-medium transition-colors ${theme === "dark" ? "text-[#2DD4BF] hover:text-[#5EEAD4]" : "text-single-orange hover:text-[#FFB84D]"}`}
           >
             Sign In
           </NavLink>
 
           <NavLink
             to="/signup"
-            className="flex items-center justify-center w-24 min-[921px]:w-32 h-11 px-3 py-2 rounded-lg font-sans text-[14px] font-medium text-white bg-primary-blue hover:bg-blue-700 transition-colors"
+            className="flex items-center justify-center shrink-0 whitespace-nowrap w-24 min-[921px]:w-32 h-11 px-3 py-2 rounded-lg font-sans text-[14px] font-medium text-white bg-primary-blue hover:bg-blue-700 transition-colors"
           >
             Sign Up
           </NavLink>

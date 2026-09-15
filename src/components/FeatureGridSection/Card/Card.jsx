@@ -1,28 +1,32 @@
 import CardBody from "./CardBody";
 import { useTheme } from "../../../context/ThemeContext.jsx";
 
+const GRID_LAYOUT_MAP = {
+  analytics: "lg:col-span-2 sm:col-span-2",
+  "ops-intelligence": "lg:col-span-3 sm:col-span-2",
+  integrations: "lg:col-span-1 lg:order-1",
+  "access-control": "lg:col-span-1 lg:order-2",
+};
+
+
+const VARIANT_BG_MAP = {
+  recovery: "bg-blue-card text-semi-white",
+  "visual-builder": "bg-[#F4A016]",
+};
+
 export default function Card({ info }) {
   const { theme } = useTheme();
-  const classes =
-    info.id == "recovery"
-      ? "bg-blue-card text-semi-white "
-      : info.id == "visual-builder"
-        ? "bg-[#F4A016]"
-        : theme == "dark"
-          ? "bg-dark-theme"
-          : "bg-[#FCFCFD]";
-  let gridDesktopView =
-    info.id == "analytics"
-      ? "lg:col-span-2 sm:col-span-2"
-      : info.id == "ops-intelligence"
-        ? "lg:col-span-3 sm:col-span-2"
-        : info.id == "integrations"
-          ? "lg:col-span-1 lg:order-1"
-          : `lg:col-span-1 lg:${info.id == "access-control" ? "order-2" : "order-0"}`;
+
+  const gridClasses = GRID_LAYOUT_MAP[info.id] || "lg:col-span-1 lg:order-0";
+
+  const defaultThemeBg = theme === "dark" ? "bg-dark-theme" : "bg-[#FCFCFD]";
+  const bgClasses = VARIANT_BG_MAP[info.id] || defaultThemeBg;
+
+  const borderClasses = theme === "dark" ? "border-[#333230]" : "border-[#E4E3DF]";
 
   return (
     <div
-      className={`border ${theme == "dark" ? "border-[#333230]" : "border-[#E4E3DF]"} rounded-xl p-4  ${classes}  ${gridDesktopView}`}
+      className={`border rounded-xl p-4 ${borderClasses} ${bgClasses} ${gridClasses}`}
     >
       <CardBody
         id={info.id}
