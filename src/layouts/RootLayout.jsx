@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import TopNavigation from "../components/Navigation/TopNavigation";
 import SideDrawer from "../components/Navigation/SideDrawer";
 import AnnouncementBar from "../components/AnnouncementBar/AnnouncementBar";
+import Footer from "../components/Footer/Footer";
+import CookieBanner from "../components/CookieBanner/CookieBanner";
 
 // Keep in sync with the max-[920px] / min-[921px] breakpoints used in
 // TopNavigation and SideDrawer.
@@ -60,7 +62,10 @@ export function RootLayout(){
             <main>
                 <Outlet />
             </main>
+            <Footer />
 
+            {/* Fixed to the viewport bottom, so it sits outside the column flow. */}
+            <CookieBanner />
         </div>
     );
 }
