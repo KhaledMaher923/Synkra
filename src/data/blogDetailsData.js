@@ -12,7 +12,7 @@ export const blogDetailsMeta = {
 }
 
 // Each block renders in order inside the article body. `id` on heading
-// blocks doubles as the anchor target for the "In this article" sidebar nav.
+// blocks doubles as the anchor target + scroll-spy target for the "In this article" sidebar nav.
 export const blogDetailsBody = [
     {
         type: "paragraph",

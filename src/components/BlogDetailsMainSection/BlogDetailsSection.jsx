@@ -10,7 +10,7 @@ export default function BlogDetailsSection() {
     const isDark = theme === "dark";
 
     return (
-        <section className={`px-6 py-12 lg:px-8 ${isDark ? "bg-dark-theme" : "bg-light-theme"}`}>
+        <section className={`px-8 py-12 lg:px-8 ${isDark ? "bg-dark-theme" : "bg-light-theme"}`}>
             <div className="flex flex-col lg:flex-row gap-10 max-w-300 mx-auto">
                 <article className="flex flex-col gap-8 flex-1 min-w-0">
                     <BlogDetailsHeader />
@@ -25,7 +25,7 @@ export default function BlogDetailsSection() {
                     <BlogDetailsCTA />
                 </article>
 
-                <BlogDetailsSidebar className="sticky"/>
+                <BlogDetailsSidebar/>
             </div>
 
         </section>

@@ -7,24 +7,25 @@ export default function BlogDetailsHeader() {
 
     return (
         <header className="flex flex-col gap-4">
-            <span
-                className={`font-sans text-[12px] font-semibold tracking-wider uppercase ${
-                isDark ? "text-blue-400" : "text-[#1A56DB]"
-                }`}
-            >
-                {blogDetailsMeta.tag}
-            </span>
-
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex flex-col gap-4">
+                <span
+                    className={`font-sans text-[12px] font-semibold tracking-wider uppercase ${
+                    isDark ? "text-blue-400" : "text-[#1A56DB]"
+                    }`}
+                >
+                    {blogDetailsMeta.tag}
+                </span>
+
                 <h1
-                className={`font-header italic text-[32px] sm:text-[38px] leading-tight max-w-140 ${
+                className={`font-header italic text-[38px] sm:text-[48px] font-medium leading-tight max-w-140 ${
                     isDark ? "text-white" : "text-[#131210]"
                 }`}
                 >
                 {blogDetailsMeta.title}
                 </h1>
-            
-                <div>
+            </div>
+                <div className="flex items-center gap-3 shrink-0">
                     <img
                         src={blogDetailsMeta.authorImage}
                         alt={blogDetailsMeta.author}

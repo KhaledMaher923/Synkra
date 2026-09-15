@@ -1,5 +1,6 @@
 import { useTheme } from "../../context/ThemeContext";
 import { blogDetailsBody, blogDetailsTags } from "../../data/blogDetailsData.js";
+import BlogDetailsNewsletterCard from "./BlogDetailsNewsletterCard.jsx";
 
 function Paragraph({ text, isDark }) {
     return (
@@ -20,10 +21,14 @@ function Heading({ id, text, isDark }) {
     );
 }
 
-function Pullquote({ text }) {
+function Pullquote({ text, isDark }) {
     return (
-        <blockquote className="border-l-2 border-[#1A56DB] pl-5">
-            <p className="font-sans italic text-[17px] leading-relaxed text-[#1A56DB]">
+        <blockquote className={`border-l-2 pl-5 ${isDark ? "border-single-orange" : "border-[#1A56DB]"}`}>
+            <p
+                className={`font-sans italic text-[18px] leading-relaxed ${
+                isDark ? "text-single-orange" : "text-[#1A56DB]"
+                }`}
+            >
                 {text}
             </p>
         </blockquote>
@@ -35,10 +40,10 @@ function Callout({ text, attribution, isDark }) {
         <blockquote
             className={`rounded-xl p-6 ${isDark ? "bg-[#1C1B18]" : "bg-[#E4E3DF]"}`}
         >
-            <p className={`font-header italic text-[19px] leading-relaxed ${isDark ? "text-gray-100" : "text-[#131210]"}`}>
+            <p className={`font-header italic text-[24px] leading-relaxed ${isDark ? "text-gray-100" : "text-[#131210]"}`}>
                 &quot;{text}&quot;
             </p>
-            <cite className={`block mt-3 not-italic font-sans text-[13px] ${isDark ? "text-blue-400" : "text-[#1A56DB]"}`}>
+            <cite className={`block mt-3 not-italic font-sans text-[14px] ${isDark ? "text-blue-400" : "text-[#1A56DB]"}`}>
                 {attribution}
             </cite>
         </blockquote>
@@ -48,25 +53,25 @@ function Callout({ text, attribution, isDark }) {
 function OrderedList({ items, isDark }) {
     return (
         <ol className="flex flex-col gap-5">
-        {items.map((item) => (
-            <li key={item.title} className="flex items-start gap-4">
-            <span
-                className={`flex items-center justify-center w-7 h-7 rounded-full shrink-0 font-sans text-[13px] font-bold ${
-                isDark ? "bg-emerald-900/50 text-emerald-300" : "bg-emerald-100 text-emerald-700"
-                }`}
-            >
-                {items.indexOf(item) + 1}
-            </span>
-            <div>
-                <p className={`font-sans text-[15px] font-bold ${isDark ? "text-white" : "text-[#131210]"}`}>
-                {item.title}
-                </p>
-                <p className={`font-sans text-[14px] ${isDark ? "text-gray-400" : "text-[#514F4A]"}`}>
-                {item.text}
-                </p>
-            </div>
-            </li>
-        ))}
+            {items.map((item, i) => (
+                <li key={item.title} className="flex items-start gap-4">
+                    <span
+                        className={`flex items-center justify-center w-7 h-7 rounded-full shrink-0 font-sans text-[13px] font-bold ${
+                        isDark ? "bg-emerald-900/50 text-emerald-300" : "bg-emerald-100 text-emerald-700"
+                        }`}
+                    >
+                        {i + 1}
+                    </span>
+                    <div>
+                        <p className={`font-header text-[16px] font-semibold ${isDark ? "text-white" : "text-[#131210]"}`}>
+                            {item.title}
+                        </p>
+                        <p className={`DM-sans text-[16px] ${isDark ? "text-gray-400" : "text-[#514F4A]"}`}>
+                            {item.text}
+                        </p>
+                    </div>
+                </li>
+            ))}
         </ol>
     );
 }
@@ -84,7 +89,7 @@ export default function BlogDetailsContent() {
             case "heading":
                 return <Heading key={block.id} id={block.id} text={block.text} isDark={isDark} />;
             case "pullquote":
-                return <Pullquote key={index} text={block.text} />;
+                return <Pullquote key={index} text={block.text} isDark={isDark} />;
             case "callout":
                 return (
                 <Callout key={index} text={block.text} attribution={block.attribution} isDark={isDark} />
@@ -95,6 +100,10 @@ export default function BlogDetailsContent() {
                 return null;
             }
         })}
+            <div className="lg:hidden">
+                <BlogDetailsNewsletterCard isDark={isDark} />
+            </div>
+        
             <div className="flex flex-wrap gap-2 pt-2">
                 {blogDetailsTags.map((tag) => (
                     <span
