@@ -49,7 +49,7 @@ Ensure you have **Node.js** (v18.0 or higher recommended) installed:
 
 1. **Clone the Repository**
    ```bash
-   git clone [https://github.com/KhaledMaher923/Synkra.git](https://github.com/KhaledMaher923/Synkra.git)
+   git clone https://github.com/KhaledMaher923/Synkra.git
    
    cd Synkra
 1. **Install Dependencies**
