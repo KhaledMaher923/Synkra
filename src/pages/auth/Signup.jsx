@@ -1,6 +1,5 @@
+import AuthSection from "../../components/AuthPages/AuthSection.jsx";
 
-export function Signup(){
-    return (
-        <h1>Hello Signup</h1>
-    );
+export function Signup() {
+  return <AuthSection mode="signUp" />;
 }
