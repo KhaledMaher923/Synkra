@@ -15,6 +15,7 @@ import {
 import { FaHeadset } from "react-icons/fa6";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import Logo from "../UI/Logo.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 // Same icon set as the original Figma CMS mock — only the label + route were
 // swapped so this drawer links straight into the public site's real routing.
@@ -48,6 +49,7 @@ export default function SideDrawer({ isOpen, onClose, isMobile, isCompact, onTog
   const { theme } = useTheme();
   const drawerRef = useRef(null);
   const location = useLocation();
+  const {user} = useAuth();
 
   useEffect(() => { onClose(); }, [location.pathname, location.hash, onClose]);
 
@@ -77,7 +79,7 @@ export default function SideDrawer({ isOpen, onClose, isMobile, isCompact, onTog
           Clicking it always closes the drawer. min-[921px]:hidden keeps it mobile/tablet only. */}
       {isOpen && (
         <div
-          className="navigation-overlay fixed inset-x-0 bottom-0 bg-black/50 z-30 transition-opacity min-[921px]:hidden"
+          className={`navigation-overlay fixed inset-x-0 bottom-0 bg-black/50 z-30 transition-opacity ${user?'min-[1071px]:hidden':'min-[921px]:hidden'}`}
           onClick={onClose}
           aria-hidden="true"
         />
@@ -93,7 +95,7 @@ export default function SideDrawer({ isOpen, onClose, isMobile, isCompact, onTog
         className={`navigation-drawer fixed left-0 z-40 flex flex-col transition-all duration-300 ease-in-out border-r shadow-xl
           ${theme === "dark" ? "bg-dark-theme border-zinc-800 text-semi-white" : "bg-semi-white border-gray-200 text-dark-theme"}
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          ${isCompact ? "w-22" : "w-84"} max-w-[85vw] min-[921px]:hidden
+          ${isCompact ? "w-22" : "w-84"} max-w-[85vw] ${user?'min-[1071px]:hidden':'min-[921px]:hidden'}
         `}
       >
         {/* HEADER: compact/stretch toggle + Logo + a dedicated Close (X) button.
