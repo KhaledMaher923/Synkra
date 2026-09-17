@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { supabase } from '../supabaseClient'
+import { supabase } from '../supabase'
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext({})
 
@@ -7,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [session, setSession] = useState(null)
   const [loading, setLoading] = useState(true)
-
+  const navigate = useNavigate();
   useEffect(() => {
     // 1. جلب الجلسة الحالية عند بداية التحميل
     const getInitialSession = async () => {
@@ -30,6 +31,9 @@ export const AuthProvider = ({ children }) => {
         setSession(session)
         setUser(session?.user ?? null)
         setLoading(false)
+        if(_event === "SIGNED_IN" && session) {
+            navigate('/', { replace: true });
+        }
       }
     )
 
