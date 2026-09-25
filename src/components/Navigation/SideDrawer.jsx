@@ -90,7 +90,7 @@ export default function SideDrawer({ isOpen, onClose, isMobile, isCompact, onTog
       <aside
         ref={drawerRef}
         id="side-navigation"
-        inert={!isOpen ? "true" : undefined}
+        inert={!isOpen}
         aria-label="Mobile Navigation"
         className={`navigation-drawer fixed left-0 z-40 flex flex-col transition-all duration-300 ease-in-out border-r shadow-xl
           ${theme === "dark" ? "bg-dark-theme border-zinc-800 text-semi-white" : "bg-semi-white border-gray-200 text-dark-theme"}

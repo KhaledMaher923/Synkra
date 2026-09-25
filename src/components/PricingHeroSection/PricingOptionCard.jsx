@@ -1,6 +1,6 @@
 import { useTheme } from "../../context/ThemeContext";
 
-export function PricingOptionCard({isAnnual,badge=null,title,subtitle,monthPayment,annualDiscount,privileges,nextAction,ArrowIcon,CircleCheckIcon}){
+export function PricingOptionCard({isAnnual,badge=null,title,subtitle,monthPayment,annualDiscount,privileges,nextAction,ArrowIcon,CircleCheckIcon,onSelect,isLoading=false,disabled=false}){
     const {theme} = useTheme();
 
     const rawPrice = isAnnual
@@ -18,11 +18,19 @@ export function PricingOptionCard({isAnnual,badge=null,title,subtitle,monthPayme
 
             <p className='text-[12px]'>{subtitle}</p>
             <ul className='flex flex-col gap-4 pb-6'>
-                {privileges?.map((privilege,index)=>{
+                {privileges?.map((privilege)=>{
                     return(<li key={privilege}><p className={`flex items-center gap-3.5 text-[12px] pb-2 border-b ${theme === 'dark'?'border-b-gray-600':'border-b-gray-300'}`}>{CircleCheckIcon && <CircleCheckIcon className='text-straight-green bg-green-200 rounded-full'/>} {privilege}</p></li>);
                 })}
             </ul>
-            <button className={`flex items-center justify-center gap-2 text-[12px] font-medium min-w-10 w-full h-10 capitalize border border-gray-200 rounded-lg cursor-pointer transition-transform duration-100 ease-in-out ${badge && 'text-white bg-primary-blue'} hover:scale-110 hover:bg-gray-800 hover:text-white active:scale-95`}>{nextAction}{ArrowIcon && <ArrowIcon className='text-sm'/>}</button>
+            <button
+                type="button"
+                onClick={onSelect}
+                disabled={disabled}
+                className={`flex items-center justify-center gap-2 text-[12px] font-medium min-w-10 w-full h-10 capitalize border border-gray-200 rounded-lg cursor-pointer transition-transform duration-100 ease-in-out ${badge && 'text-white bg-primary-blue'} hover:scale-110 hover:bg-gray-800 hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100`}
+            >
+                {isLoading ? 'Submitting...' : nextAction}
+                {!isLoading && ArrowIcon && <ArrowIcon className='text-sm'/>}
+            </button>
         </article>
     );
 }
