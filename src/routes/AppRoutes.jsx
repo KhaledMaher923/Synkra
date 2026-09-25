@@ -18,6 +18,7 @@ import { Careers } from "../pages/Careers";
 import { AppIntegrations } from "../pages/AppIntegrations";
 import { PartnerProgram } from "../pages/PartnerProgram";
 import { NotFound } from "../pages/NotFound";
+import { ContactUs } from "../pages/ContactUs";
 
 
 export function AppRoutes(){
@@ -40,7 +41,7 @@ export function AppRoutes(){
                 <Route path="/jobs" element={<Careers/>} />
                 <Route path="/integrations" element={<AppIntegrations/>} />
                 <Route path="/partners" element={<PartnerProgram/>} />
-
+                <Route path="/ContactUs" element={<ContactUs/>} />
                 {/* Inside the layout so a 404 still renders the navbar + footer. */}
                 <Route path="*" element={<NotFound/>}/>
             </Route>
