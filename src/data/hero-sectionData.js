@@ -14,7 +14,7 @@ const subheadline = {
 };
 
 const buttons = {
-  primary: "Get early access",
+  primary: "Get access",
   secondary: "Watch",
   bold: " Synkra",
   normal: " in action",

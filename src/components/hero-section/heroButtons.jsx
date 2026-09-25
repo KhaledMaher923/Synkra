@@ -1,15 +1,18 @@
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { buttons, disclaimer } from "../../data/hero-sectionData";
 import { KeyReturn } from "@phosphor-icons/react";
+import { useNavigate } from 'react-router-dom';
 
 function HeroButtons() {
   const { theme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-4 max-md:flex-col">
 
-        <button className="w-full md:w-auto flex justify-center font-sans-serif items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+        <button onClick={() => navigate('/signup')}
+        className="w-full md:w-auto flex justify-center font-sans-serif items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
         <span> {buttons.primary}</span> 
          <KeyReturn
             size={16} 
@@ -20,7 +23,7 @@ function HeroButtons() {
 
         </button>
 
-        <button
+        <button onClick={() => navigate('/pricing')}
           className={`px-6 py-3 rounded-lg font-medium border transition ${
             theme === "dark"
               ? "border-gray-600 text-semi-white hover:bg-gray-800"
