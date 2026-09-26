@@ -1,7 +1,10 @@
 // src/components/Auth/AuthSection.jsx
 import { useTheme } from "../../context/ThemeContext.jsx";
+import SignUpFormApi from "../ApiAuthPages/SignUpFormApi.jsx";
+import SignInFormApi from "../ApiAuthPages/SigninFormApi.jsx";
 import SignInForm from "./SignInForm.jsx";
 import SignUpForm from "./SignUpForm.jsx";
+
 
 export default function AuthSection({ mode = "signIn" }) {
   const { theme } = useTheme();
@@ -22,7 +25,8 @@ export default function AuthSection({ mode = "signIn" }) {
           : undefined
       }
     >
-      {mode === "signIn" ? <SignInForm /> : <SignUpForm />}
+      {/* {mode === "signIn" ? <SignInForm /> : <SignUpForm />} */}
+      {mode === "signIn" ? <SignInFormApi /> : <SignUpFormApi />}
     </section>
   );
 }

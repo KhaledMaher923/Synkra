@@ -6,14 +6,15 @@ import { useTheme } from "../../context/ThemeContext.jsx";
 import { navigationLinks } from "../../data/navigationData.js";
 import ThemeToggle from "../UI/ThemeToggle.jsx";
 import Logo from "../UI/Logo.jsx";
-import { useAuth } from "../../context/AuthContext.jsx";
+// import { useAuth } from "../../context/AuthContext.jsx";
+import { useAuthApi } from "../../context/AuthApiContext.jsx"; 
 
 export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
   const { theme } = useTheme();
   const location = useLocation();
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const { user,signOut } = useAuth();
+  const { profile,signOut } = useAuthApi();
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -41,7 +42,7 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
           {/* Mobile Hamburger / Close Button - Visible up to 920px */}
           <button
             type="button"
-            className={`${user?'min-[1070px]:hidden':'min-[920px]:hidden'} shrink-0 p-1.5 rounded-lg text-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue`}
+            className={`${profile?'min-[1070px]:hidden':'min-[920px]:hidden'} shrink-0 p-1.5 rounded-lg text-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue`}
             onClick={onOpenMobileMenu}
             aria-controls="side-navigation"
             aria-expanded={isMobileMenuOpen}
@@ -60,7 +61,7 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
           {/* Desktop Nav Links - Hidden up to 920px.
               These are the flexible part: the gap tightens between 921px and 1200px
               instead of the logo or the auth buttons getting compressed. */}
-          <ul className={`${user?'max-[1070px]:hidden':'max-[920px]:hidden'} flex items-center min-w-0 gap-4 min-[1200px]:gap-8 list-none p-0 m-0`}>
+          <ul className={`${profile?'max-[1070px]:hidden':'max-[920px]:hidden'} flex items-center min-w-0 gap-4 min-[1200px]:gap-8 list-none p-0 m-0`}>
             {navigationLinks.map((link) => {
               const isActive = link.hasDropdown
                 ? link.dropdownItems.some((item) => location.pathname + location.hash === item.path)
@@ -134,8 +135,8 @@ export default function TopNavigation({ onOpenMobileMenu, isMobileMenuOpen }) {
         <div className="flex items-center shrink-0 whitespace-nowrap gap-2 min-[921px]:gap-4 min-[1200px]:gap-6">
           <ThemeToggle />
 
-          {user?<>
-            <div className="bg-primary-blue text-white rounded-3xl px-4 py-1 max-[500px]:text-[12px] max-[500px]:px-2">{user?.user_metadata?.full_name}</div>
+          {profile?<>
+            <div className="bg-primary-blue text-white rounded-3xl px-4 py-1 max-[500px]:text-[12px] max-[500px]:px-2">{profile.name}</div>
             <button className="flex items-center justify-center shrink-0 whitespace-nowrap px-3 py-2 rounded-lg font-sans text-[14px] font-medium text-white bg-primary-blue hover:bg-blue-700 transition-colors max-[500px]:px-1.5 max-[500px]:text-[12px] " onClick={()=>{signOut()}}>Sign Out</button>
           </> :<>
             <NavLink
