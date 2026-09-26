@@ -6,17 +6,25 @@ import { useAuth } from '../../context/AuthContext';
 import { PricingHeroSectionHeader } from './PricingHeroSectionHeader';
 import { PricingOptionCard } from './PricingOptionCard';
 import { AnnualMonthToggler } from './AnnualMonthToggler';
+import { useAuthApi } from '../../context/AuthApiContext';
+import { useCookies } from "react-cookie";
+
 
 export function PricingHeroSection({title='',subtitle='',pageLabel='',paymentOptions=[], icons={}}){
     const [isAnnual, setIsAnnual] = useState(false);
     const [requestState, setRequestState] = useState({ status: 'idle', planId: null, message: '' });
     const {theme} = useTheme();
-    const { session, apiAccessToken, refreshApiToken } = useAuth();
+    const {refreshApiToken } = useAuthApi();
     const navigate = useNavigate();
     const PriceIcon = icons?.PriceIcon;
     const CircleCheckIcon = icons?.CircleCheckIcon;
     const ArrowIcon = icons?.ArrowIcon;
+    const [cookies] = useCookies([
+    "email",
+    "access",
+    "refresh",
 
+  ]);
     const handlePlanSelect = async (paymentOption) => {
         if (paymentOption.title.toLowerCase() === 'enterprise') {
             toast.info('Opening the contact form.');
@@ -24,7 +32,16 @@ export function PricingHeroSection({title='',subtitle='',pageLabel='',paymentOpt
             return;
         }
 
-        if (!session?.user || !apiAccessToken) {
+        // if (!session?.user || !apiAccessToken) {
+        //     toast.error('Sign in to connect your subscription account.', {
+        //         action: {
+        //             label: 'Sign in',
+        //             onClick: () => navigate('/signin'),
+        //         },
+        //     });
+        //     return;
+        // }
+        if (!cookies.access) {
             toast.error('Sign in to connect your subscription account.', {
                 action: {
                     label: 'Sign in',
@@ -56,7 +73,7 @@ export function PricingHeroSection({title='',subtitle='',pageLabel='',paymentOpt
                 }
             );
 
-            let response = await submitRequest(apiAccessToken);
+            let response = await submitRequest(cookies.access);
             if (response.status === 401) {
                 response = await submitRequest(await refreshApiToken());
             }
