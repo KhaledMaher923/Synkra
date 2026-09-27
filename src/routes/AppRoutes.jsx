@@ -19,6 +19,7 @@ import { AppIntegrations } from "../pages/AppIntegrations";
 import { PartnerProgram } from "../pages/PartnerProgram";
 import { NotFound } from "../pages/NotFound";
 import { ContactUs } from "../pages/ContactUs";
+import { Profile } from "../pages/Profile";
 
 
 export function AppRoutes(){
@@ -32,6 +33,7 @@ export function AppRoutes(){
                 <Route path="/blog-detail" element={<BlogDetails/>} />
                 <Route path="/changelog" element={<Changelog/>} />
                 <Route path="/pricing" element={<Pricing/>} />
+                <Route path="/profile" element={<Profile />} />
 
                 {/* Footer links */}
                 <Route path="/privacy" element={<PrivacyPolicy/>} />
