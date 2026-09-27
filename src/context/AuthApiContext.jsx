@@ -4,12 +4,16 @@ import {
   useState,
   useEffect,
   useCallback,
+  useMemo,
 } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { toast } from 'sonner';
 
 const API_BASE = "https://gig-program-apis-production.up.railway.app/api";
+const DEFAULT_AVATAR =
+  "https://static.vecteezy.com/system/resources/previews/021/548/095/original/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg";
 
 const AuthApiContext = createContext(null);
 
@@ -39,25 +43,36 @@ export const AuthApiProvider = ({ children }) => {
         "Profile fetch error:",
         error.response?.data || error.message,
       );
+      if (error.response?.data.code == "token_not_valid") {
+        await refreshApiToken();
+      }
       return null;
     }
   }, []);
 
   // Sync state on initial application load or cookie hydration
   useEffect(() => {
+    let isMounted = true;
+
     const initAuth = async () => {
       if (cookies.access && cookies.email) {
         const userProfile = await fetchUserProfile(
           cookies.access,
           cookies.email,
         );
-        setProfile(userProfile);
+        if (isMounted) setProfile(userProfile);
+      } else if (isMounted) {
+        setProfile(null);
       }
-      setLoading(false);
+      if (isMounted) setLoading(false);
     };
-    initAuth();
-  }, [cookies.access, cookies.email, fetchUserProfile]);
 
+    initAuth();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [cookies.access, cookies.email, fetchUserProfile, profile]);
   const logIn = async (email, password) => {
     setLoading(true);
     try {
@@ -85,6 +100,7 @@ export const AuthApiProvider = ({ children }) => {
       };
     } finally {
       setLoading(false);
+      toast.success('Welcome back!')
     }
   };
 
@@ -94,7 +110,7 @@ export const AuthApiProvider = ({ children }) => {
       {
         name: name,
         username: email,
-        image: null,
+        image: DEFAULT_AVATAR,
         bio: null,
         role: phone,
       },
@@ -146,11 +162,21 @@ export const AuthApiProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    removeCookie("email", { path: "/" });
-    removeCookie("access", { path: "/" });
-    removeCookie("refresh", { path: "/" });
-    setProfile(null);
-    navigate("/", { replace: true });
+    try {
+      removeCookie("email", { path: "/" });
+      removeCookie("access", { path: "/" });
+      removeCookie("refresh", { path: "/" });
+      setProfile(null);
+    } catch (error) {
+      return {
+        success: false,
+        error: error.response?.data.email || "Registration pipeline failed.",
+      };
+    } finally {
+      setLoading(false);
+      navigate("/", { replace: true });
+      toast.success('You have Signed Out')
+    }
   };
   const refreshApiToken = async () => {
     if (!cookies.refresh)
@@ -171,16 +197,75 @@ export const AuthApiProvider = ({ children }) => {
       };
     }
   };
-  const value = {
-    logIn,
-    signUp,
-    signOut,
-    profile,
-    loading,
-    refreshApiToken,
-    isAuthenticated: Boolean(cookies.refresh && cookies.access && profile),
+  const editProfileImage = async (
+    imageurl,
+    token = cookies.access,
+    id = profile.id,
+  ) => {
+    if (imageurl == null) imageurl = DEFAULT_AVATAR;
+    try {
+      const editResponse = await axios.patch(
+        `${API_BASE}/profiles/${id}/`,
+        {
+          image: imageurl,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
+      const userProfile = await fetchUserProfile(token, email);
+      setProfile(userProfile);
+    } catch (e) {
+      return {
+        success: false,
+        error: e.message || "Getting access token failed",
+      };
+    }
   };
-
+  const editProfileInfo = async ({
+    token = cookies.access,
+    id = profile.id,
+    bio = profile.bio,
+    email = profile.username,
+    name = profile.name,
+    phone = profile.role,
+  }) => {
+    try {
+      const editResponse = await axios.patch(
+        `${API_BASE}/profiles/${id}/`,
+        {
+          name: name,
+          username: email,
+          bio: bio,
+          role: phone,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
+      const userProfile = await fetchUserProfile(token, email);
+      setProfile(userProfile);
+    } catch (e) {
+      return {
+        success: false,
+        error: e.message || "Getting access token failed",
+      };
+    }
+  };
+  const value = useMemo(
+    () => ({
+      logIn,
+      signUp,
+      signOut,
+      profile,
+      loading,
+      refreshApiToken,
+      editProfileImage,
+      editProfileInfo,
+      isAuthenticated: Boolean(cookies.refresh && cookies.access && profile),
+    }),
+    [profile, loading, cookies.refresh, cookies.access],
+  );
   return (
     <AuthApiContext.Provider value={value}>{children}</AuthApiContext.Provider>
   );
