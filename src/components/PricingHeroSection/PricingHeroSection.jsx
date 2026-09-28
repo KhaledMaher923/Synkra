@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useTheme } from '../../context/ThemeContext';
-import { useAuth } from '../../context/AuthContext';
 import { PricingHeroSectionHeader } from './PricingHeroSectionHeader';
 import { PricingOptionCard } from './PricingOptionCard';
 import { AnnualMonthToggler } from './AnnualMonthToggler';
@@ -14,17 +13,12 @@ export function PricingHeroSection({title='',subtitle='',pageLabel='',paymentOpt
     const [isAnnual, setIsAnnual] = useState(false);
     const [requestState, setRequestState] = useState({ status: 'idle', planId: null, message: '' });
     const {theme} = useTheme();
-    const {refreshApiToken } = useAuthApi();
+    const {upgradeSubscription} = useAuthApi();
     const navigate = useNavigate();
     const PriceIcon = icons?.PriceIcon;
     const CircleCheckIcon = icons?.CircleCheckIcon;
     const ArrowIcon = icons?.ArrowIcon;
-    const [cookies] = useCookies([
-    "email",
-    "access",
-    "refresh",
-
-  ]);
+    const [cookies] = useCookies(['email', 'access', 'refresh']);
     const handlePlanSelect = async (paymentOption) => {
         if (paymentOption.title.toLowerCase() === 'enterprise') {
             toast.info('Opening the contact form.');
@@ -32,15 +26,6 @@ export function PricingHeroSection({title='',subtitle='',pageLabel='',paymentOpt
             return;
         }
 
-        // if (!session?.user || !apiAccessToken) {
-        //     toast.error('Sign in to connect your subscription account.', {
-        //         action: {
-        //             label: 'Sign in',
-        //             onClick: () => navigate('/signin'),
-        //         },
-        //     });
-        //     return;
-        // }
         if (!cookies.access) {
             toast.error('Sign in to connect your subscription account.', {
                 action: {
@@ -55,41 +40,22 @@ export function PricingHeroSection({title='',subtitle='',pageLabel='',paymentOpt
         const planTitle = paymentOption.title.charAt(0).toUpperCase() + paymentOption.title.slice(1);
         const planName = `${planTitle} ${billingPeriod}`;
 
+        if (planName.toLowerCase().includes('starter')) {
+            navigate('/profile');
+            return;
+        }
+
         const toastId = `subscription-${paymentOption.id}`;
         setRequestState({ status: 'loading', planId: paymentOption.id });
         toast.loading(`Submitting your ${planName} request...`, { id: toastId });
 
         try {
-            const submitRequest = (accessToken) => fetch(
-                `${import.meta.env.VITE_API_BASE_URL || 'https://gig-program-apis-production.up.railway.app'}/api/subscriptions/`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Accept: 'application/json',
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                    body: JSON.stringify({ plan_name: planName }),
-                }
-            );
-
-            let response = await submitRequest(cookies.access);
-            if (response.status === 401) {
-                response = await submitRequest(await refreshApiToken());
-            }
-
-            const responseBody = await response.json().catch(() => null);
-            if (!response.ok) {
-                throw new Error(
-                    responseBody?.detail ||
-                    responseBody?.plan_name?.[0] ||
-                    'Unable to submit your subscription request. Please try again.'
-                );
-            }
-
+            await upgradeSubscription(planName);
             toast.success(`Your ${planName} subscription request was submitted.`, { id: toastId });
+            navigate('/profile');
         } catch (error) {
-            toast.error(error.message || 'Unable to submit your subscription request. Please try again.', { id: toastId });
+            const errorMsg = error.response?.data?.detail || error.response?.data?.plan_name?.[0] || 'Unable to submit your subscription request. Please try again.';
+            toast.error(errorMsg, { id: toastId });
         } finally {
             setRequestState({ status: 'idle', planId: null });
         }
