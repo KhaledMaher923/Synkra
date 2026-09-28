@@ -20,6 +20,7 @@ const AuthApiContext = createContext(null);
 export const AuthApiProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState(null);
+  const [userSubscription, setUserSubscription] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies([
     "email",
     "access",
@@ -50,6 +51,51 @@ export const AuthApiProvider = ({ children }) => {
     }
   }, []);
 
+  const fetchUserSubscription = async () => {
+    try {
+      const response = await axios.get(`${API_BASE}/subscriptions/`, {
+        headers: { Authorization: `Bearer ${cookies.access}` },
+      });
+      if (response.data && response.data.length > 0) {
+        const data = response.data[0];
+        setUserSubscription({
+          planType: data.plan_name,
+          status: data.status,
+          trialEndsAt: data.created_at,
+          id: data.id,
+        });
+      } else {
+        setUserSubscription({ planType: 'Standard', status: 'Free', trialEndsAt: null, id: null });
+      }
+    } catch (error) {
+      console.error("Failed to fetch subscription data:", error);
+      setUserSubscription({ planType: 'Standard', status: 'Free', trialEndsAt: null, id: null });
+    }
+  };
+
+  const upgradeSubscription = async (planName) => {
+    try {
+      await axios.post(`${API_BASE}/subscriptions/`, { plan_name: planName }, {
+        headers: { Authorization: `Bearer ${cookies.access}` },
+      });
+      await fetchUserSubscription();
+    } catch (error) {
+      console.error("Failed to upgrade subscription:", error);
+      throw error;
+    }
+  };
+
+  const cancelSubscription = async (id) => {
+    try {
+      await axios.delete(`${API_BASE}/subscriptions/${id}/`, {
+        headers: { Authorization: `Bearer ${cookies.access}` },
+      });
+      setUserSubscription({ planType: 'Standard', status: 'Free', trialEndsAt: null, id: null });
+    } catch (error) {
+      console.error("Failed to cancel subscription:", error);
+    }
+  };
+
   // Sync state on initial application load or cookie hydration
   useEffect(() => {
     let isMounted = true;
@@ -64,7 +110,11 @@ export const AuthApiProvider = ({ children }) => {
       } else if (isMounted) {
         setProfile(null);
       }
-      if (isMounted) setLoading(false);
+      
+      if (isMounted) {
+        await fetchUserSubscription();
+        setLoading(false);
+      }
     };
 
     initAuth();
@@ -72,7 +122,7 @@ export const AuthApiProvider = ({ children }) => {
     return () => {
       isMounted = false;
     };
-  }, [cookies.access, cookies.email, fetchUserProfile, profile]);
+  }, [cookies.access, cookies.email, fetchUserProfile]);
   const logIn = async (email, password) => {
     setLoading(true);
     try {
@@ -90,6 +140,7 @@ export const AuthApiProvider = ({ children }) => {
 
       const userProfile = await fetchUserProfile(token, email);
       setProfile(userProfile);
+      await fetchUserSubscription();
 
       navigate("/", { replace: true });
       return { success: true };
@@ -148,6 +199,7 @@ export const AuthApiProvider = ({ children }) => {
       // Step 4: Fetch populated profile and update global state
       const userProfile = await fetchUserProfile(token, email);
       setProfile(userProfile);
+      await fetchUserSubscription();
 
       navigate("/", { replace: true });
       return { success: true };
@@ -258,13 +310,16 @@ export const AuthApiProvider = ({ children }) => {
       signUp,
       signOut,
       profile,
+      userSubscription,
       loading,
       refreshApiToken,
       editProfileImage,
       editProfileInfo,
+      upgradeSubscription,
+      cancelSubscription,
       isAuthenticated: Boolean(cookies.refresh && cookies.access && profile),
     }),
-    [profile, loading, cookies.refresh, cookies.access],
+    [profile, userSubscription, loading, cookies.refresh, cookies.access],
   );
   return (
     <AuthApiContext.Provider value={value}>{children}</AuthApiContext.Provider>
